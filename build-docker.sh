@@ -7,7 +7,7 @@
 # How to run flow.ci
 # - backend: 'docker-compose up'
 # - agent: docker run --network=host -e FLOW_ZOOKEEPER_HOST=127.0.0.1:2181 -e FLOW_AGENT_ZONE=default -e FLOW_AGENT_NAME={agent name} flow.ci.agent
-
+cd /Users/fir/Projects/Flow/flow-platform
 # mvn build artifact of each components
 mvn clean install -DskipTests=true
 
