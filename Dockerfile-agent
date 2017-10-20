@@ -13,6 +13,7 @@ ENV FLOW_AGENT_DIR=$HOME/agent
 RUN mkdir -p $FLOW_AGENT_DIR
 
 # add agent file
+cd ../flow-platform
 COPY ./platform-agent/target/flow-agent-*.jar $FLOW_AGENT_DIR
 
 WORKDIR $FLOW_AGENT_DIR

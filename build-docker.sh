@@ -8,25 +8,30 @@
 # - backend: 'docker-compose up'
 # - agent: docker run --network=host -e FLOW_ZOOKEEPER_HOST=127.0.0.1:2181 -e FLOW_AGENT_ZONE=default -e FLOW_AGENT_NAME={agent name} flow.ci.agent
 
-cd /Users/fir/Projects/Flow/flow-platform
+cd ../flow-platform
 
 # mvn build artifact of each components
 mvn clean install -DskipTests=true
 
+cd ../docker
+docker build -t flow.ci.git:0.0.1 -f ./Dockerfile-git .
+
 # build docker image for flow.ci backend
-docker build -t flow.ci.backend:1.0.11 -f ./Dockerfile-backend .
+docker build -t flow.ci.backend:0.0.1 -f ./Dockerfile-backend .
 
 # build docker compose service for flow.ci backend
+cd ../docker
 docker-compose rm -f
 docker-compose build
 
 # build docker image for flow.ci agent
-docker build -t flow.ci.agent -f ./Dockerfile-agent .
+docker build -t flow.ci.agent:0.0.1 -f ./Dockerfile-agent .
 
-docker build -t flow.ci.tomcat-git -f ./Dockerfile-git .
 
-cd /Users/firim/workspace/flow-pf/flow-web
+cd ../flow-web
 
 FLOW_WEB_API=http://localhost:8080/flow-api   npm run  build
-DOCKER_PATH=/Users/firim/workspace/flow-pf/docker/
-docker build -t flow.web -f ./Dockerfile-web .
+DOCKER_PATH=/docker/
+
+cd ../docker
+docker build -t flow.web:0.0.1 -f ./Dockerfile-web .
