@@ -37,4 +37,5 @@ cd $FLOW_WEB_PATH
 FLOW_WEB_API=http://localhost:8080/flow-api   npm run  build
 
 cp ../docker/Dockerfile-web .
+cp ../docker/default.conf .
 docker build -t flow.web:0.0.3 -f ./Dockerfile-web .
