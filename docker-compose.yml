@@ -8,6 +8,8 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     ports:
       - "3306:3306"
+    expose:
+      - 3306
 
 #  rabbitmq:
 #    image: rabbitmq:3-management
@@ -25,13 +27,16 @@ services:
 #      - "2181:2181"
 
   flow.ci:
-    image: flow.ci.backend
+    image: flow.ci.backend:1.0.11
     networks:
       - backend
     ports:
       - "8080:8080"
-    depends_on:
+      - "2181:2181"
+    links:
       - db
+    depends_on:
+       - db
 #      - rabbitmq
 #      - zookeeper
 

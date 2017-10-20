@@ -7,7 +7,7 @@
 # and app-cc.properties in config folder
 
 
-FROM tomcat:8.5.16-jre8
+FROM will/tomcat-git
 
 # setup flow.ci default environments
 ENV FLOW_PLATFORM_DIR=/etc/flow.ci

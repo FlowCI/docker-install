@@ -12,7 +12,7 @@ cd /Users/fir/Projects/Flow/flow-platform
 mvn clean install -DskipTests=true
 
 # build docker image for flow.ci backend
-docker build -t flow.ci.backend -f ./Dockerfile-backend .
+docker build -t flow.ci.backend:1.0.11 -f ./Dockerfile-backend .
 
 # build docker compose service for flow.ci backend
 docker-compose rm -f
