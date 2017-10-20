@@ -23,7 +23,6 @@ COPY ./docker/app-api.properties $FLOW_PLATFORM_CONFIG_DIR
 COPY ./docker/tomcat-users.xml $CATALINA_HOME/conf
 
 # set wars to tomcat
-
 COPY ./platform-control-center/target/flow-control-center.war $CATALINA_HOME/webapps
 COPY ./platform-api/target/flow-api.war $CATALINA_HOME/webapps
 

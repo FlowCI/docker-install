@@ -8,10 +8,6 @@
 # - backend: 'docker-compose up'
 # - agent: docker run --network=host -e FLOW_ZOOKEEPER_HOST=127.0.0.1:2181 -e FLOW_AGENT_ZONE=default -e FLOW_AGENT_NAME={agent name} flow.ci.agent
 
-
-docker build -t flow.ci.git:0.0.1 -f ./Dockerfile-git .
-
-=======
 FLOW_PLATFORM_PATH=../flow-platform
 FLOW_WEB_PATH=../flow-web
 
