@@ -1,0 +1,5 @@
+FROM nginx
+
+ENV RESULT=../flow-web/dist
+
+COPY ../flow-web/dist /usr/share/nginx/html

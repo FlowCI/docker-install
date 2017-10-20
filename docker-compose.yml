@@ -9,31 +9,25 @@ services:
     ports:
       - "3306:3306"
 
-  rabbitmq:
-    image: rabbitmq:3-management
-    networks:
-      - backend
-    ports:
-      - "5672:5672"
-      - "15672:15672"
-
-  zookeeper:
-    image: zookeeper:3.4
-    networks:
-      - backend
-    ports:
-      - "2181:2181"
-
   flow.ci:
     image: flow.ci.backend
     networks:
       - backend
     ports:
       - "8080:8080"
+      - "2181:2181"
     depends_on:
       - db
-      - rabbitmq
-      - zookeeper
+
+  flow.web:
+    image: flow.web
+    networks:
+      - backend
+    ports:
+      - "3000:80"
+    depends_on:
+      - flow.ci
+
 
 networks:
   backend:

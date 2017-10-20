@@ -17,4 +17,4 @@ COPY ./platform-agent/target/flow-agent-*.jar $FLOW_AGENT_DIR
 
 WORKDIR $FLOW_AGENT_DIR
 
-CMD java -jar ./flow-agent-*.jar $FLOW_ZOOKEEPER_HOST $FLOW_AGENT_ZONE $FLOW_AGENT_NAME
+CMD java -jar ./flow-agent-*.jar $FLOW_BASE_URL $FLOW_TOKEN
