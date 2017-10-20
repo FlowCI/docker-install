@@ -16,11 +16,12 @@ cd $FLOW_PLATFORM_PATH
 mvn clean install -DskipTests=true
 
 cp ../docker/Dockerfile-git .
-docker build -t flow.ci.git:0.0.1 -f ./Dockerfile-git .
+cp ../docker/docker/ .
+docker build -t flow.ci.git:0.0.3 -f ./Dockerfile-git .
 
 # build docker image for flow.ci backend
 cp ../docker/Dockerfile-backend .
-docker build -t flow.ci.backend:0.0.1 -f ./Dockerfile-backend .
+docker build -t flow.ci.backend:0.0.3 -f ./Dockerfile-backend .
 
 # build docker compose service for flow.ci backend
 docker-compose rm -f
@@ -29,11 +30,11 @@ docker-compose build
 
 cp ../docker/Dockerfile-agent .
 # build docker image for flow.ci agent
-docker build -t flow.ci.agent:0.0.1 -f ./Dockerfile-agent .
+docker build -t flow.ci.agent:0.0.3 -f ./Dockerfile-agent .
 
 # build web
 cd $FLOW_WEB_PATH
 FLOW_WEB_API=http://localhost:8080/flow-api   npm run  build
 
-cp ../flow-web/Dockerfile-web .
-docker build -t flow.web -f ./Dockerfile-web .
+cp ../docker/Dockerfile-web .
+docker build -t flow.web:0.0.3 -f ./Dockerfile-web .

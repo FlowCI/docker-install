@@ -12,7 +12,7 @@ services:
       - 3306
 
   flow.ci:
-    image: flow.ci.backend:0.0.1
+    image: flow.ci.backend:0.0.3
     networks:
       - backend
     ports:
@@ -22,7 +22,7 @@ services:
       - db
 
   flow.web:
-    image: flow.web:0.0.1
+    image: flow.web:0.0.3
     networks:
       - backend
     ports:
