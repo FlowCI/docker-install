@@ -10,26 +10,26 @@
 FLOW_PLATFORM_PATH=../flow-platform
 FLOW_WEB_PATH=../flow-web
 
-# cd $FLOW_PLATFORM_PATH
-# # mvn build artifact of each components
-# mvn clean install -DskipTests=true
+cd $FLOW_PLATFORM_PATH
+# mvn build artifact of each components
+mvn clean install -DskipTests=true
 
-# cp ../docker/Dockerfile-backend .
-# # build docker image for flow.ci backend
-# docker build -t flow.ci.backend -f ./Dockerfile-backend .
+cp ../docker/Dockerfile-backend .
+# build docker image for flow.ci backend
+docker build -t flow.ci.backend -f ./Dockerfile-backend .
 
-# # build docker compose service for flow.ci backend
-# docker-compose rm -f
-# docker-compose build
+# build docker compose service for flow.ci backend
+docker-compose rm -f
+docker-compose build
 
 
-# cp ../docker/Dockerfile-agent .
-# # build docker image for flow.ci agent
-# docker build -t flow.ci.agent -f ./Dockerfile-agent .
+cp ../docker/Dockerfile-agent .
+# build docker image for flow.ci agent
+docker build -t flow.ci.agent -f ./Dockerfile-agent .
 
 # build web
 cd $FLOW_WEB_PATH
-# FLOW_WEB_API=http://localhost:8080/flow-api   npm run  build
+FLOW_WEB_API=http://localhost:8080/flow-api   npm run  build
 
 cp ../docker/Dockerfile-web .
 cp ../docker/default.conf .
