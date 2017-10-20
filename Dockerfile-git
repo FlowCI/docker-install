@@ -10,5 +10,6 @@
 FROM tomcat:8.5.16-jre8
 
 RUN apt-get update
-RUN apt-get -y install vim
 RUN apt-get -y install git
+RUN git config --global user.email "flowci@flow.ci"
+RUN git config --global user.name "flowci"
