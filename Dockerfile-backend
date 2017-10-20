@@ -6,7 +6,7 @@
 # please mount to /etc/flow.ci to customize  app-api.properties,
 # and app-cc.properties in config folder
 
-FROM flow.ci.git:0.0.3
+FROM flow.ci.git:0.0.4
 
 # setup flow.ci default environments
 ENV FLOW_PLATFORM_DIR=/etc/flow.ci
