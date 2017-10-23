@@ -7,5 +7,5 @@ ENV FLOW_WEB_LOG=/var/log/nginx
 RUN mkdir -p $FLOW_WEB_DIR
 RUN mkdir -p $FLOW_WEB_LOG
 
-COPY ./dist $FLOW_WEB_DIR
-COPY ./default.conf /etc/nginx/conf.d
+COPY ./target/dist $FLOW_WEB_DIR
+COPY ./nginx/default.conf /etc/nginx/conf.d

@@ -10,6 +10,9 @@ services:
       - "3306:3306"
     expose:
       - 3306
+    volumes:
+      - "./mysql:/etc/mysql/mysql.conf.d"
+      -
 
   flow.ci:
     image: flow.ci.backend:0.0.4
