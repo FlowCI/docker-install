@@ -8,6 +8,8 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     ports:
       - "3306:3306"
+    volumes:
+      - "./mysql:/etc/mysql/mysql.conf.d"
 
   flow.ci:
     image: flow.ci.backend
