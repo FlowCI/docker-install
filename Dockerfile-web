@@ -3,7 +3,6 @@ FROM nginx
 ENV FLOW_WEB_DIR=/var/www/flow-web
 ENV FLOW_WEB_LOG=/var/log/nginx
 
-# COPY ./dist /usr/share/nginx/html
 
 RUN mkdir -p $FLOW_WEB_DIR
 RUN mkdir -p $FLOW_WEB_LOG

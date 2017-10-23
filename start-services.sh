@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
 
-# Pull and run required services via docker
+docker-compose up
 
-# pull mysql docker image
-# docker pull mysql:5.6
-
-# pull rabbitmq 3.6.10 docker image
-# docker pull rabbitmq:3.6
-
-docker run -d -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -p 3306:3306 mysql:5.6
-docker run -d --hostname flow-rabbit -p 15672:15672 -p 5672:5672 rabbitmq:3.6-management
+docker run --network=host -e FLOW_ZOOKEEPER_HOST=127.0.0.1:2181 -e FLOW_BASE_URL=http://127.0.0.1:8080/flow-api -e FLOW_TOKEN=034d03c4-2756-4c1e-a0aa-85c7b196a16c flow.ci.agent:0.0.4

@@ -8,12 +8,14 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     ports:
       - "3306:3306"
+    expose:
+      - 3306
     volumes:
       - "./mysql:/etc/mysql/mysql.conf.d"
-      - "/tmp/mysql:/var/lib/mysql"
+      -
 
   flow.ci:
-    image: flow.ci.backend
+    image: flow.ci.backend:0.0.4
     networks:
       - backend
     ports:
@@ -23,14 +25,12 @@ services:
       - db
 
   flow.web:
-    image: flow.web
+    image: flow.web:0.0.4
     networks:
       - backend
     ports:
       - "3000:80"
     depends_on:
       - flow.ci
-
-
 networks:
   backend:
