@@ -15,7 +15,7 @@ services:
       -
 
   flow.ci:
-    image: flow.ci.backend:0.0.4
+    image: flow.ci.backend
     networks:
       - backend
     ports:
@@ -25,7 +25,7 @@ services:
       - db
 
   flow.web:
-    image: flow.web:0.0.4
+    image: flow.web
     networks:
       - backend
     ports:

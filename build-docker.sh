@@ -22,10 +22,10 @@ mkdir -p ./target
 cp $FLOW_PLATFORM_PATH/platform-control-center/target/flow-control-center.war ./target
 cp $FLOW_PLATFORM_PATH/platform-api/target/flow-control-center.war ./target
 
-docker build -t flow.ci.git:0.0.4 -f ./Dockerfile-git .
+docker build -t flow.ci.git -f ./Dockerfile-git .
 
 # build docker image for flow.ci backend
-docker build -t flow.ci.backend:0.0.4 -f ./Dockerfile-backend .
+docker build -t flow.ci.backend -f ./Dockerfile-backend .
 
 # build docker compose service for flow.ci backend
 docker-compose rm -f
@@ -33,7 +33,7 @@ docker-compose build
 
 cp $FLOW_PLATFORM_PATH/platform-agent/target/flow-agent-*.jar ./target
 # build docker image for flow.ci agent
-docker build -t flow.ci.agent:0.0.4 -f ./Dockerfile-agent .
+docker build -t flow.ci.agent -f ./Dockerfile-agent .
 
 # build web
 cd $FLOW_WEB_PATH
@@ -41,4 +41,4 @@ FLOW_WEB_API=http://localhost:8080/flow-api   npm run  build
 
 cd $FLOW_DOCKER_PATH
 cp -r $FLOW_WEB_PATH/dist ./target
-docker build -t flow.web:0.0.4 -f ./Dockerfile-web .
+docker build -t flow.web -f ./Dockerfile-web .
