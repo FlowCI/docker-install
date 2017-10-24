@@ -7,3 +7,5 @@ log-error	= /var/log/mysql/error.log
 symbolic-links=0
 character_set_server=utf8
 collation_server=utf8_general_ci
+default-time_zone = '+8:00'
+
