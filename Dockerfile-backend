@@ -15,7 +15,6 @@ ENV FLOW_PLATFORM_CONFIG_DIR=/etc/flow.ci/config
 RUN mkdir -p $FLOW_PLATFORM_DIR
 RUN mkdir -p $FLOW_PLATFORM_CONFIG_DIR
 
-
 # setup flow.ci default configuration
 COPY ./docker/app-cc.properties $FLOW_PLATFORM_CONFIG_DIR
 COPY ./docker/app-api.properties $FLOW_PLATFORM_CONFIG_DIR

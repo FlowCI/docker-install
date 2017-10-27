@@ -12,10 +12,10 @@ services:
       - 3306
     volumes:
       - "./mysql:/etc/mysql/mysql.conf.d"
-      -
+      - "/tmp/mysql:/var/lib/mysql"
 
   flow.ci:
-    image: flow.ci.backend
+    image: flowci/flow.ci.backend
     networks:
       - backend
     ports:
@@ -25,7 +25,7 @@ services:
       - db
 
   flow.web:
-    image: flow.web
+    image: flowci/flow.web
     networks:
       - backend
     ports:

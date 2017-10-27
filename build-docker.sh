@@ -1,19 +1,10 @@
 #!/usr/bin/env bash
 
-# The following docker will be generated:
-#  - flow.ci.backend: it includes api and control center
-#  - flow.ci.agent:
-
-# How to run flow.ci
-# - backend: 'docker-compose up'
-# - agent: docker run --network=host -e FLOW_ZOOKEEPER_HOST=127.0.0.1:2181 -e FLOW_AGENT_ZONE=default -e FLOW_AGENT_NAME={agent name} flow.ci.agent
-
 FLOW_PLATFORM_PATH=../flow-platform
 FLOW_WEB_PATH=../flow-web
 FLOW_DOCKER_PATH=../docker
 
 cd $FLOW_PLATFORM_PATH
-# mvn build artifact of each components
 mvn clean install -DskipTests=true
 
 cd $FLOW_DOCKER_PATH
@@ -22,6 +13,7 @@ mkdir -p ./target
 cp $FLOW_PLATFORM_PATH/dist/flow-control-center-*.war ./target/flow-control-center.war
 cp $FLOW_PLATFORM_PATH/dist/flow-api-*.war ./target/flow-api.war
 
+# build docker image for flow.ci git
 docker build -t flow.ci.git -f ./Dockerfile-git .
 
 # build docker image for flow.ci backend
@@ -37,7 +29,7 @@ docker build -t flow.ci.agent -f ./Dockerfile-agent .
 
 # build web
 cd $FLOW_WEB_PATH
-FLOW_WEB_API=http://localhost:8080/flow-api   npm run  build
+FLOW_WEB_API=http://localhost:8080/flow-api   npm run build
 
 cd $FLOW_DOCKER_PATH
 cp -r $FLOW_WEB_PATH/dist ./target
