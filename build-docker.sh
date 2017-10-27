@@ -10,8 +10,8 @@ mvn clean install -DskipTests=true
 cd $FLOW_DOCKER_PATH
 # cp target to docker folder
 mkdir -p ./target
-cp $FLOW_PLATFORM_PATH/platform-control-center/target/flow-control-center.war ./target
-cp $FLOW_PLATFORM_PATH/platform-api/target/flow-api.war ./target
+cp $FLOW_PLATFORM_PATH/dist/flow-control-center-*.war ./target/flow-control-center.war
+cp $FLOW_PLATFORM_PATH/dist/flow-api-*.war ./target/flow-api.war
 
 # build docker image for flow.ci git
 docker build -t flow.ci.git -f ./Dockerfile-git .
@@ -23,7 +23,7 @@ docker build -t flow.ci.backend -f ./Dockerfile-backend .
 docker-compose rm -f
 docker-compose build
 
-cp $FLOW_PLATFORM_PATH/platform-agent/target/flow-agent-*.jar ./target
+cp $FLOW_PLATFORM_PATH/dist/flow-agent-*.jar ./target
 # build docker image for flow.ci agent
 docker build -t flow.ci.agent -f ./Dockerfile-agent .
 
