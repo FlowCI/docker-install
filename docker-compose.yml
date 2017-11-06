@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
   db:
     image: mysql:5.6
@@ -8,14 +8,12 @@ services:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     ports:
       - "3306:3306"
-    expose:
-      - 3306
     volumes:
       - "./mysql:/etc/mysql/mysql.conf.d"
       - "/tmp/mysql:/var/lib/mysql"
 
   flow.ci:
-    image: flowci/flow.ci.backend
+    image: flow.ci.backend
     networks:
       - backend
     ports:
@@ -23,11 +21,15 @@ services:
       - "2181:2181"
     depends_on:
       - db
+    volumes:
+      - "./docker:/etc/flow.ci/config"
 
   flow.web:
-    image: flowci/flow.web
+    image: flow.web
     networks:
       - backend
+    environment:
+      - FLOW_API=$FLOW_API
     ports:
       - "3000:80"
     depends_on:

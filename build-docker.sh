@@ -3,6 +3,18 @@
 FLOW_PLATFORM_PATH=../flow-platform
 FLOW_WEB_PATH=../flow-web
 FLOW_DOCKER_PATH=../docker
+PLACEHOLDER=:FLOWCI:
+
+if [[ ! -d  $FLOW_PLATFORM_PATH ]]; then
+	echo "请确保 flow-platform 与 docker 项目在同一目录下"
+	exit;
+fi
+
+if [[ ! -d  $FLOW_WEB_PATH ]]; then
+	echo "请确保 flow-web 与 docker 项目在同一目录下"
+	exit;
+fi
+
 
 cd $FLOW_PLATFORM_PATH
 mvn clean install -DskipTests=true
@@ -29,7 +41,7 @@ docker build -t flow.ci.agent -f ./Dockerfile-agent .
 
 # build web
 cd $FLOW_WEB_PATH
-FLOW_WEB_API=http://localhost:8080/flow-api   npm run build
+FLOW_WEB_API=$PLACEHOLDER   npm run build
 
 cd $FLOW_DOCKER_PATH
 cp -r $FLOW_WEB_PATH/dist ./target
