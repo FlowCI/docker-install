@@ -9,3 +9,6 @@ RUN mkdir -p $FLOW_WEB_LOG
 
 COPY ./target/dist $FLOW_WEB_DIR
 COPY ./nginx/default.conf /etc/nginx/conf.d
+COPY ./docker/flow-web.sh $FLOW_WEB_DIR
+
+CMD bash $FLOW_WEB_DIR/flow-web.sh && nginx -g 'daemon off;'
