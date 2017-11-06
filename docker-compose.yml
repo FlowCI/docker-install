@@ -13,9 +13,12 @@ services:
       - "/tmp/mysql:/var/lib/mysql"
 
   flow.ci:
-    image: flowci/flow.ci.backend
+    image: flow.ci.backend
     networks:
       - backend
+    environment:
+      - FLOW_API_DOMAIN=$FLOW_API_DOMAIN
+      - FLOW_WEB_DOMAIN=$FLOW_WEB_DOMAIN
     ports:
       - "8080:8080"
       - "2181:2181"
@@ -25,11 +28,11 @@ services:
       - "./docker:/etc/flow.ci/config"
 
   flow.web:
-    image: flowci/flow.web
+    image: flow.web
     networks:
       - backend
     environment:
-      - FLOW_API=$FLOW_API
+      - FLOW_API_DOMAIN=$FLOW_API_DOMAIN
     ports:
       - "3000:80"
     depends_on:

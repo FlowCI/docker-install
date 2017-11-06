@@ -4,6 +4,6 @@
 
 export FLOW_WEB_DIR=/var/www/flow-web
 
-sed -e "s#:FLOWCI:#${FLOW_API}#g"  $FLOW_WEB_DIR/index.html > $FLOW_WEB_DIR/tmp.html
+sed -e "s#:FLOWCI:#${FLOW_API_DOMAIN}/flow-api#g"  $FLOW_WEB_DIR/index.html > $FLOW_WEB_DIR/tmp.html
 
 mv $FLOW_WEB_DIR/tmp.html $FLOW_WEB_DIR/index.html
