@@ -19,6 +19,7 @@ services:
     environment:
       - FLOW_API_DOMAIN=$FLOW_API_DOMAIN
       - FLOW_WEB_DOMAIN=$FLOW_WEB_DOMAIN
+      - FLOW_WS_URL=$FLOW_WS_URL
     ports:
       - "8080:8080"
       - "2181:2181"
