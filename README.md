@@ -19,7 +19,7 @@
     FLOW_WS_URL：部署的Api的 web socket 地址，默认：ws://localhost:8080 \
     FLOW_SYS_EMAIL：Flow 的系统账号，默认是 admin@flow.ci \
     FLOW_SYS_USERNAME：Flow 的用户名，默认是 admin \
-    FLOW_SYS_PASSWORD: Flow 的系统密码，默认是 12345 \
+    FLOW_SYS_PASSWORD: Flow 的系统密码，默认是 123456 \
     Demo: 
   	```
   	mkdir flowci 
