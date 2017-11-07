@@ -57,9 +57,9 @@
     
 * **Start Agent**
   - 以 Docker 形式启动 Agent \
-    运行命令： ./start-agent.sh
+  	USER_DOCKER=true ./start-agent.sh $FLOW_API_URL $FLOW_TOKEN
     >建议不要使用 docker 启动 Agent, 因为不太灵活
    
   - 以 Jar 包形式启动 Agent \
     首先先准备好 java 环境，之后运行脚本：\
-    java -jar flow-agent.jar([下载地址](https://github.com/FlowCI/docker/raw/feature/change_docker_latest/agent/flow-agent-0.1.0.jar))  FLOW_API_URL FLOW_TOKEN 
+    ./start-agent.sh $FLOW_API_URL $FLOW_TOKEN  $FLOW_API_URL $FLOW_TOKEN 
