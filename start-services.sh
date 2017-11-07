@@ -2,7 +2,7 @@
 
 echo "###########环境变量说明###########"
 echo "FLOW_API_DOMAIN: 部署的FlowApi地址, 默认是 http://localhost:8080"
-echo "FLOW_WEB_DOMAIN: 部署的FlowWeb地址, 默认是 http://localhost:80"
+echo "FLOW_WEB_DOMAIN: 部署的FlowWeb地址, 默认是 http://localhost:3000"
 echo "FLOW_WS_URL: FlowApi websocket 地址, 默认是 ws://localhost:8080"
 echo "FLOW_SYS_EMAIL: Flow 的系统账号， 默认是 admin@flow.ci"
 echo "FLOW_SYS_USERNAME: Flow 的系统用户名， 默认是 admin"
@@ -13,7 +13,7 @@ if [[ ! -n $FLOW_API_DOMAIN ]]; then
 fi
 
 if [[ ! -n $FLOW_WEB_DOMAIN ]]; then
-	export FLOW_WEB_DOMAIN=http://localhost:80
+	export FLOW_WEB_DOMAIN=http://localhost:3000
 fi
 
 if [[ ! -n $FLOW_WS_URL ]]; then
