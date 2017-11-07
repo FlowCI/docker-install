@@ -33,9 +33,9 @@
     cd docker \
     ./build-docker.sh
   - build docker 的环境变量描述: \
-    DOCKER_NAME_FLOWCI: FlowApi build 的 docker 名称，默认 flow.ci.backend \
-    DOCKER_NAME_FLOW_WEB: FlowWeb build 的 docker 名称，默认 flow.web \
-    DOCKER_NAME_FLOWCI_AGENT: FlowApi build 的 docker 名称，默认 flow.ci.agent \
+    DOCKER_NAME_FLOWCI: FlowApi build 的 image 名称，默认 flow.ci.backend \
+    DOCKER_NAME_FLOW_WEB: FlowWeb build 的 image 名称，默认 flow.web \
+    DOCKER_NAME_FLOWCI_AGENT: FlowApi build 的 image 名称，默认 flow.ci.agent \
     Demo: \
     DOCKER_NAME_FLOWCI=abc ./build-docker.sh  \
     build 了新的镜像 abc \
