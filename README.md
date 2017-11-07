@@ -11,7 +11,7 @@
   	curl -L  -o docker.zip  https://github.com/FlowCI/docker/archive/master.zip \
   	之后再解压 docker 目录下
  
-* **直接部署**：
+* **Start Docker**：
   - 进入到上步下载的 docker 目录，执行命令: ./start-services.sh，之后可以访问地址 http://localhost:3000 进入
   - 启动时可以添加各种环境变量，例如\
     FLOW_API_DOMAIN： 部署的Api域名地址， 默认：[http://localhost:8080]()   \
@@ -30,7 +30,7 @@
     浏览器输入 xxxx.ci 即可
     ```
     
-* **build Docker 镜像**
+* **Build Docker**
   - 确保 flow-platform、flow-web、docker三个项目在同一目录下 \
     Demo：
     ```
