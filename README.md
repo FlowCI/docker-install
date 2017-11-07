@@ -31,7 +31,7 @@
     ```
     
 * **build Docker 镜像**
-  - 确保 flow-platform、flow-web、docker三个项目在同一目录下
+  - 确保 flow-platform、flow-web、docker三个项目在同一目录下 \
     Demo：
     ```
     mkdir flowci 
