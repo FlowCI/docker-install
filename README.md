@@ -20,35 +20,35 @@
     FLOW_SYS_EMAIL：Flow 的系统账号，默认是 admin@flow.ci \
     FLOW_SYS_USERNAME：Flow 的用户名，默认是 admin \
     FLOW_SYS_PASSWORD: Flow 的系统密码，默认是 12345 \
+    Demo: 
   	```
-    Demo: \
-  	mkdir flowci \
-  	cd flowci \
-  	git clone git@github.com:FlowCI/docker.git \
-  	cd docker \
-    FLOW_API_DOMAIN=http://api.xxxx.ci FLOW_WEB_DOMAIN=http://xxxx.ci ./start-services.sh \
+  	mkdir flowci 
+  	cd flowci 
+  	git clone git@github.com:FlowCI/docker.git 
+  	cd docker 
+    FLOW_API_DOMAIN=http://api.xxxx.ci FLOW_WEB_DOMAIN=http://xxxx.ci ./start-services.sh 
     浏览器输入 xxxx.ci 即可
     ```
     
 * **build Docker 镜像**
   - 确保 flow-platform、flow-web、docker三个项目在同一目录下
-    使用 Git 举例：\
+    Demo：
     ```
-    mkdir flowci \
-    cd flowci \
-    git clone git@github.com:FlowCI/flow-platform.git \
-    git clone git@github.com:FlowCI/flow-web.git \
-    git clone git@github.com:FlowCI/docker.git \
-    cd docker \
+    mkdir flowci 
+    cd flowci 
+    git clone git@github.com:FlowCI/flow-platform.git 
+    git clone git@github.com:FlowCI/flow-web.git 
+    git clone git@github.com:FlowCI/docker.git 
+    cd docker 
     ./build-docker.sh
     ```
   - build docker 的环境变量描述: \
     DOCKER_NAME_FLOWCI: FlowApi build 的 image 名称，默认 [flowci/flow.ci.backend](https://hub.docker.com/r/flowci/flow.ci.backend/) \
     DOCKER_NAME_FLOW_WEB: FlowWeb build 的 image 名称，默认 [flowci/flow.web](https://hub.docker.com/r/flowci/flow.web/) \
     DOCKER_NAME_FLOWCI_AGENT: FlowApi build 的 image 名称，默认 [flowci/flow.ci.agent](https://hub.docker.com/r/flowci/flow.ci.agent/) \
+    Demo: 
     ```
-    Demo: \
-    DOCKER_NAME_FLOWCI=abc ./build-docker.sh  \
-    build 了新的镜像 abc \
+    DOCKER_NAME_FLOWCI=abc ./build-docker.sh  
+    build 了新的镜像 abc 
     修改 docker-compose.yml 把flow.ci的image 改为 abc
     ```
