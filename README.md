@@ -1,5 +1,5 @@
 ## FlowCi docker 使用说明
-### 安装docker环境到宿主机
+### 安装 docker 环境
 >安装步骤请查看官方文档[install docker](https://github.com/docker/docker.github.io/edit/master/docker-for-mac/install.md)
 
 ### 使用 FlowCi
