@@ -21,7 +21,7 @@
     FLOW_SYS_USERNAME：Flow 的用户名，默认是 admin \
     FLOW_SYS_PASSWORD: Flow 的系统密码，默认是 12345 \
   	Demo: \
-    FLOW_API_DOMAIN=http://flow.ci ./start_services.sh
+    FLOW_API_DOMAIN=http://flow.ci ./start-services.sh
     
 * **build Docker 镜像**
   - 确保 flow-platform、flow-web、docker三个项目在同一目录下
