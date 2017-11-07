@@ -19,8 +19,7 @@
     FLOW_SYS_EMAIL：Flow 的系统账号，默认是 admin@flow.ci \
     FLOW_SYS_USERNAME：Flow 的用户名，默认是 admin \
     FLOW_SYS_PASSWORD: Flow 的系统密码，默认是 12345 \
-  	
-  	Demo:
+  	Demo: \
     FLOW_API_DOMAIN=http://flow.ci ./start_services.sh
     
 * **build Docker 镜像**
@@ -36,8 +35,8 @@
   - build docker 的环境变量描述: \
     DOCKER_NAME_FLOWCI: FlowApi build 的 docker 名称，默认 flow.ci.backend \
     DOCKER_NAME_FLOW_WEB: FlowWeb build 的 docker 名称，默认 flow.web \
-    DOCKER_NAME_FLOWCI_AGENT: FlowApi build 的 docker 名称，默认 flow.ci.agent 
-    Demo:
+    DOCKER_NAME_FLOWCI_AGENT: FlowApi build 的 docker 名称，默认 flow.ci.agent \
+    Demo: \
     DOCKER_NAME_FLOWCI=abc ./build-docker.sh  \
     build 了新的镜像 abc \
     修改 docker-compose.yml 把flow.ci的image 改为 abc
