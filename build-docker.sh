@@ -1,5 +1,22 @@
 #!/usr/bin/env bash
 
+echo "###########环境变量说明###########"
+echo "DOCKER_NAME_FLOWCI: FlowApi build 的 docker 名称，默认 flow.ci.backend"
+echo "DOCKER_NAME_FLOW_WEB: FlowWeb build 的 docker 名称，默认 flow.web"
+echo "DOCKER_NAME_FLOWCI_AGENT: FlowApi build 的 docker 名称，默认 flow.ci.agent"
+
+if [[ ! -n $DOCKER_NAME_FLOWCI_AGENT ]]; then
+	export DOCKER_NAME_FLOWCI_AGENT=flow.ci.agent
+fi
+
+if [[ ! -n $DOCKER_NAME_FLOWCI ]]; then
+	export DOCKER_NAME_FLOWCI=flow.ci.backend
+fi
+
+if [[ ! -n $DOCKER_NAME_FLOW_WEB ]]; then
+	export DOCKER_NAME_FLOW_WEB=flow.web
+fi
+
 FLOW_PLATFORM_PATH=../flow-platform
 FLOW_WEB_PATH=../flow-web
 FLOW_DOCKER_PATH=../docker
@@ -29,7 +46,7 @@ cp $FLOW_PLATFORM_PATH/dist/flow-api-*.war ./target/flow-api.war
 docker build -t flow.ci.git -f ./Dockerfile-git .
 
 # build docker image for flow.ci backend
-docker build -t flow.ci.backend -f ./Dockerfile-backend .
+docker build -t $DOCKER_NAME_FLOWCI -f ./Dockerfile-backend .
 
 # build docker compose service for flow.ci backend
 docker-compose rm -f
@@ -37,7 +54,7 @@ docker-compose build
 
 cp $FLOW_PLATFORM_PATH/dist/flow-agent-*.jar ./target
 # build docker image for flow.ci agent
-docker build -t flow.ci.agent -f ./Dockerfile-agent .
+docker build -t $DOCKER_NAME_FLOWCI_AGENT -f ./Dockerfile-agent .
 
 # build web
 cd $FLOW_WEB_PATH
@@ -45,4 +62,4 @@ FLOW_WEB_API=$PLACEHOLDER   npm run build
 
 cd $FLOW_DOCKER_PATH
 cp -r $FLOW_WEB_PATH/dist ./target
-docker build -t flow.web -f ./Dockerfile-web .
+docker build -t $DOCKER_NAME_FLOW_WEB -f ./Dockerfile-web .
