@@ -7,7 +7,7 @@
 * **克隆代码**：
   - 选择通过 Git 的形式 Clone 代码，确保机器已经安装Git，之后执行命令： \
   	git clone git@github.com:FlowCI/docker.git
-  - 选择直接通过下载的形式 Clone 代码，之后执行命令： \
+  - 选择直接通过下载的形式下载代码，之后执行命令： \
   	curl -L  -o docker.zip  https://github.com/FlowCI/docker/archive/master.zip \
   	之后再解压 docker 目录下
  
