@@ -48,7 +48,9 @@
     DOCKER_NAME_FLOWCI_AGENT: FlowApi build 的 image 名称，默认 [flowci/flow.ci.agent](https://hub.docker.com/r/flowci/flow.ci.agent/) \
     Demo: 
     ```
-    DOCKER_NAME_FLOWCI=abc ./build-docker.sh  
-    build 了新的镜像 abc 
-    修改 docker-compose.yml 把flow.ci的image 改为 abc
+    DOCKER_NAME_FLOWCI=AAAAAA DOCKER_NAME_FLOW_WEB=BBBBB ./build-docker.sh  
+    build 了新的镜像 AAAAAA,BBBBB 
+    修改 docker-compose.yml 
+    把flow.ci的 image 改为 AAAAAA
+    把flow.web的 image 改为 BBBBB
     ```
