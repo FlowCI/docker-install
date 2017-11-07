@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 # example ./start-agent.sh http://127.0.0.1:8080/flow-api cfc4a6f1-a2ea-4263-83b2-5f68eadaecbe
 
-if [[ ! -n $FLOW_API_DOMAIN ]]; then
-	echo "please enter $FLOW_API_DOMAIN"
-	exit 1
-fi
-
 FLOW_ZOOKEEPER_HOST=127.0.0.1:2181
 DOCKER_IMAGE_AGENT=flowci/flow.ci.agent
 

@@ -57,9 +57,10 @@
     
 * **Start Agent**
   - 以 Docker 形式启动 Agent \
-  	USER_DOCKER=true ./start-agent.sh $FLOW_API_URL $FLOW_TOKEN
+  	USER_DOCKER=true ./start-agent.sh $FLOW_API_DOMAIN $FLOW_TOKEN
     >建议不要使用 docker 启动 Agent, 因为不太灵活
    
   - 以 Jar 包形式启动 Agent \
     首先先准备好 java 环境，之后运行脚本：\
-    ./start-agent.sh $FLOW_API_URL $FLOW_TOKEN  $FLOW_API_URL $FLOW_TOKEN 
+    FLOW_API_DOMAIN： 部署的Api域名地址， 默认：[http://localhost:8080]()  \
+    ./start-agent.sh $FLOW_API_DOMAIN $FLOW_TOKEN
