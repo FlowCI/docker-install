@@ -23,7 +23,7 @@
     FLOW_API_DOMAIN=http://flow.ci ./start_services.sh
     
 * **build Docker 镜像**
-  - 确保 flow-platform、flow-web、docker三个项目在统一目录下
+  - 确保 flow-platform、flow-web、docker三个项目在同一目录下
     使用 Git 举例：\
     mkdir flowci \
     cd flowci \
