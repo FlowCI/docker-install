@@ -62,5 +62,5 @@
    
   - 以 Jar 包形式启动 Agent \
     首先先准备好 java 环境，之后运行脚本：\
-    FLOW_API_DOMAIN： 部署的Api域名地址， 默认：[http://localhost:8080]()  \
-    ./start-agent.sh $FLOW_API_DOMAIN $FLOW_TOKEN
+    ./start-agent.sh $FLOW_API_DOMAIN $FLOW_TOKEN \
+    FLOW_API_DOMAIN 请看上述配置
