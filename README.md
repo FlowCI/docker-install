@@ -12,11 +12,11 @@
 * **直接部署**：
   - 进入到上步下载的 docker 目录，执行命令: ./start-services.sh，之后可以访问地址 http://localhost:3000 进入
   - 启动时可以添加各种环境变量，例如\
-    FLOW_API_DOMAIN： 部署的Api域名地址， 默认：http://localhost:8080\
-    FLOW_WEB_DOMAIN： 部署的Web的域名地址，默认：http://localhost:3000\
-    FLOW_WS_URL：部署的Api的 web socket 地址，默认：ws://localhost:8080\
-    FLOW_SYS_EMAIL：Flow 的系统账号，默认是 admin@flow.ci\
-    FLOW_SYS_USERNAME：Flow 的用户名，默认是 admin\
+    FLOW_API_DOMAIN： 部署的Api域名地址， 默认：[http://localhost:8080]()   \
+    FLOW_WEB_DOMAIN： 部署的Web的域名地址，默认：[http://localhost:3000]()   \
+    FLOW_WS_URL：部署的Api的 web socket 地址，默认：ws://localhost:8080 \
+    FLOW_SYS_EMAIL：Flow 的系统账号，默认是 admin@flow.ci \
+    FLOW_SYS_USERNAME：Flow 的用户名，默认是 admin \
     FLOW_SYS_PASSWORD: Flow 的系统密码，默认是 12345
     
     FLOW_API_DOMAIN=http://flow.ci ./start_services.sh
