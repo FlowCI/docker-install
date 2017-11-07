@@ -20,14 +20,15 @@
     FLOW_SYS_EMAIL：Flow 的系统账号，默认是 admin@flow.ci \
     FLOW_SYS_USERNAME：Flow 的用户名，默认是 admin \
     FLOW_SYS_PASSWORD: Flow 的系统密码，默认是 12345 \
-  	Demo: \
+  	```
+    Demo: \
   	mkdir flowci \
   	cd flowci \
   	git clone git@github.com:FlowCI/docker.git \
   	cd docker \
     FLOW_API_DOMAIN=http://api.xxxx.ci FLOW_WEB_DOMAIN=http://xxxx.ci ./start-services.sh \
     浏览器输入 xxxx.ci 即可
-
+    ```
     
 * **build Docker 镜像**
   - 确保 flow-platform、flow-web、docker三个项目在同一目录下
