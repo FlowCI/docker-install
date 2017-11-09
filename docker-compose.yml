@@ -17,7 +17,7 @@ services:
     networks:
       - backend
     environment:
-      JAVA_OPTS: "-Xms1536m -Xmx1536m"
+      JAVA_OPTS: $JAVA_OPTS
       FLOW_API_DOMAIN: $FLOW_API_DOMAIN
       FLOW_WEB_DOMAIN: $FLOW_WEB_DOMAIN
       FLOW_SYS_EMAIL: $FLOW_SYS_EMAIL
