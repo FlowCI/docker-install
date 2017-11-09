@@ -12,13 +12,11 @@
   	之后再解压 docker 目录下
  
 * **Start Docker**：
-  - 进入到上步下载的 docker 目录，执行命令: ./start-services.sh，之后可以访问地址 http://localhost:3000 进入
+  - 进入到上步下载的 docker 目录，执行命令: ./start-services.sh，之后可以访问地址 http://127.0.0.1:3000 进入
   - 启动时可以添加各种环境变量，例如\
     MYSQL_PASSWORD: 初始化的mysql密码，默认用户名 root 不可修改，默认密码 flow.ci 可修改 \
-    FLOW_API_DOMAIN: 部署的Api域名地址， 默认：[http://localhost:8080]()   \
-    FLOW_WEB_DOMAIN: 部署的Web的域名地址，默认：[http://localhost:3000]()   \
-    FLOW_WS_URL：部署的Api的 web socket 地址，默认：ws://localhost:8080 \
-    FLOW_ZOOKEEPER_URL: Zookeeper 的系统地址，默认是 127.0.0.1:2181 \
+    FLOW_API_DOMAIN: 部署的Api域名地址， 默认：[127.0.0.1]()   \
+    FLOW_WEB_DOMAIN: 部署的Web的域名地址，默认：[127.0.0.1]()   \
     FLOW_SYS_EMAIL：Flow 的系统账号，默认是 admin@flow.ci \
     FLOW_SYS_USERNAME：Flow 的用户名，默认是 admin \
     FLOW_SYS_PASSWORD: Flow 的系统密码，默认是 123456 \
@@ -65,4 +63,4 @@
   - 以 Jar 包形式启动 Agent \
     首先先准备好 java 环境，之后运行脚本：\
     ./start-agent.sh $FLOW_API_DOMAIN $FLOW_TOKEN \
-    FLOW_API_DOMAIN 请看上述配置默认：http://127.0.0.1:8080
+    FLOW_API_DOMAIN 请看上述配置默认：127.0.0.1

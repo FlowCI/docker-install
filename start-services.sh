@@ -11,30 +11,14 @@ fi
 echo "MYSQL_PASSWORD: 配置的Mysql的初始密码, 默认是 flow.ci , 当前参数是 $MYSQL_PASSWORD"
 
 if [[ ! -n $FLOW_API_DOMAIN ]]; then
-	export FLOW_API_DOMAIN=http://localhost:8080
+	export FLOW_API_DOMAIN=127.0.0.1
 fi
-echo "FLOW_API_DOMAIN: 部署的FlowApi地址, 默认是 http://localhost:8080, 当前参数值是 ${FLOW_API_DOMAIN}"
-
-
-if [[ ! -n $FLOW_API_DOMAIN ]]; then
-	export FLOW_API_DOMAIN=http://localhost:8080
-fi
-echo "FLOW_API_DOMAIN: 部署的FlowApi地址, 默认是 http://localhost:8080, 当前参数值是 ${FLOW_API_DOMAIN}"
+echo "FLOW_API_DOMAIN: 部署的FlowApi地址, 默认是 localhost, 当前参数值是 ${FLOW_API_DOMAIN}"
 
 if [[ ! -n $FLOW_WEB_DOMAIN ]]; then
-	export FLOW_WEB_DOMAIN=http://localhost:3000
+	export FLOW_WEB_DOMAIN=127.0.0.1
 fi
-echo "FLOW_WEB_DOMAIN: 部署的FlowWeb地址, 默认是 http://localhost:3000, 当前参数值是 $FLOW_WEB_DOMAIN"
-
-if [[ ! -n $FLOW_WS_URL ]]; then
-	export FLOW_WS_URL=ws://localhost:8080
-fi
-echo "FLOW_WS_URL: FlowApi websocket 地址, 默认是 ws://localhost:8080, 当前参数值是 $FLOW_WS_URL"
-
-if [[ ! -n $FLOW_ZOOKEEPER_URL ]]; then
-	export FLOW_ZOOKEEPER_URL=127.0.0.1:2181
-fi
-echo "FLOW_ZOOKEEPER_URL: ZooKeeper的地址， 默认是 127.0.0.1:2181, 当前参数值是 $FLOW_ZOOKEEPER_URL"
+echo "FLOW_WEB_DOMAIN: 部署的FlowWeb地址, 默认是 localhost, 当前参数值是 $FLOW_WEB_DOMAIN"
 
 if [[ ! -n $FLOW_SYS_EMAIL ]]; then
 	export FLOW_SYS_EMAIL=admin@flow.ci
