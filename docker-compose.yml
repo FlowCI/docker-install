@@ -1,15 +1,13 @@
-version: '3'
+version: '2'
 services:
   db:
     image: mysql:5.6
     networks:
       - backend
     environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=$MYSQL_PASSWORD
     ports:
       - "3306:3306"
-    expose:
-      - 3306
     volumes:
       - "./mysql:/etc/mysql/mysql.conf.d"
       - "/tmp/mysql:/var/lib/mysql"
@@ -18,16 +16,29 @@ services:
     image: flow.ci.backend
     networks:
       - backend
+    environment:
+      CATALINA_OPTS: $CATALINA_OPTS
+      FLOW_API_DOMAIN: $FLOW_API_DOMAIN
+      FLOW_WEB_DOMAIN: $FLOW_WEB_DOMAIN
+      FLOW_SYS_EMAIL: $FLOW_SYS_EMAIL
+      FLOW_SYS_USERNAME: $FLOW_SYS_USERNAME
+      FLOW_SYS_PASSWORD: $FLOW_SYS_PASSWORD
+      MYSQL_USER: $MYSQL_USER
+      MYSQL_PASSWORD: $MYSQL_PASSWORD
     ports:
       - "8080:8080"
       - "2181:2181"
     depends_on:
       - db
+    volumes:
+      - "./docker:/etc/flow.ci/config"
 
   flow.web:
     image: flow.web
     networks:
       - backend
+    environment:
+      - FLOW_API_DOMAIN=http://$FLOW_API_DOMAIN:8080/flow-api
     ports:
       - "3000:80"
     depends_on:
