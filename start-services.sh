@@ -2,6 +2,20 @@
 
 echo "###########环境变量说明###########"
 
+export MYSQL_USER=root
+echo "MYSQL_USER: 配置的Mysql的初始用户名, 默认是 root , 不可修改"
+
+if [[ ! -n $MYSQL_PASSWORD ]]; then
+	export MYSQL_PASSWORD=flow.ci
+fi
+echo "MYSQL_PASSWORD: 配置的Mysql的初始密码, 默认是 flow.ci , 当前参数是 $MYSQL_PASSWORD"
+
+if [[ ! -n $FLOW_API_DOMAIN ]]; then
+	export FLOW_API_DOMAIN=http://localhost:8080
+fi
+echo "FLOW_API_DOMAIN: 部署的FlowApi地址, 默认是 http://localhost:8080, 当前参数值是 ${FLOW_API_DOMAIN}"
+
+
 if [[ ! -n $FLOW_API_DOMAIN ]]; then
 	export FLOW_API_DOMAIN=http://localhost:8080
 fi
@@ -36,6 +50,7 @@ if [[ ! -n $FLOW_SYS_PASSWORD ]]; then
 	export FLOW_SYS_PASSWORD=123456
 fi
 echo "FLOW_SYS_PASSWORD: Flow 的系统密码， 默认是 123456, 当前参数值是 $FLOW_SYS_PASSWORD"
+
 
 
 
