@@ -17,6 +17,11 @@ if [[ ! -n $FLOW_WS_URL ]]; then
 	export FLOW_WS_URL=ws://localhost:8080
 fi
 
+if [[ ! -n $FLOW_ZOOKEEPER_URL ]]; then
+	echo "FLOW_ZOOKEEPER_URL: ZooKeeper的地址， 默认是 127.0.0.1:2181"
+	export FLOW_ZOOKEEPER_URL=127.0.0.1:2181
+fi
+
 if [[ ! -n $FLOW_SYS_EMAIL ]]; then
 	echo "FLOW_SYS_EMAIL: Flow 的系统账号， 默认是 admin@flow.ci"
 	export FLOW_SYS_EMAIL=admin@flow.ci
@@ -31,6 +36,8 @@ if [[ ! -n $FLOW_SYS_PASSWORD ]]; then
 	echo "FLOW_SYS_PASSWORD: Flow 的系统密码， 默认是 123456"
 	export FLOW_SYS_PASSWORD=123456
 fi
+
+
 
 docker-compose up
 

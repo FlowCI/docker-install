@@ -3,17 +3,17 @@
 echo "###########环境变量说明###########"
 
 if [[ ! -n $DOCKER_NAME_FLOWCI_AGENT ]]; then
-	echo "WARNING...没有填写环境变量 DOCKER_NAME_FLOWCI_AGENT: FlowApi build 的 docker 名称，默认 flowci/flow.ci.agent"
+	echo "WARNING...没有填写环境变量 DOCKER_NAME_FLOWCI_AGENT: FlowApi build 的 docker 名称，默认 flow.ci.agent"
 	export DOCKER_NAME_FLOWCI_AGENT=flow.ci.agent
 fi
 
 if [[ ! -n $DOCKER_NAME_FLOWCI ]]; then
-	echo "WARNING...没有填写环境变量 DOCKER_NAME_FLOWCI: FlowApi build 的 docker 名称，默认 flowci/flow.ci.backend"
+	echo "WARNING...没有填写环境变量 DOCKER_NAME_FLOWCI: FlowApi build 的 docker 名称，默认 flow.ci.backend"
 	export DOCKER_NAME_FLOWCI=flow.ci.backend
 fi
 
 if [[ ! -n $DOCKER_NAME_FLOW_WEB ]]; then
-	echo "WARNING...没有填写环境变量 DOCKER_NAME_FLOW_WEB: FlowWeb build 的 docker 名称，默认 flowci/flow.web"
+	echo "WARNING...没有填写环境变量 DOCKER_NAME_FLOW_WEB: FlowWeb build 的 docker 名称，默认 flow.web"
 	export DOCKER_NAME_FLOW_WEB=flow.web
 fi
 
