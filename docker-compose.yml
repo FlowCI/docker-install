@@ -19,8 +19,6 @@ services:
     environment:
       - FLOW_API_DOMAIN=$FLOW_API_DOMAIN
       - FLOW_WEB_DOMAIN=$FLOW_WEB_DOMAIN
-      - FLOW_ZOOKEEPER_URL=$FLOW_ZOOKEEPER_URL
-      - FLOW_WS_URL=$FLOW_WS_URL
       - FLOW_SYS_EMAIL=$FLOW_SYS_EMAIL
       - FLOW_SYS_USERNAME=$FLOW_SYS_USERNAME
       - FLOW_SYS_PASSWORD=$FLOW_SYS_PASSWORD
@@ -39,7 +37,7 @@ services:
     networks:
       - backend
     environment:
-      - FLOW_API_DOMAIN=$FLOW_API_DOMAIN
+      - FLOW_API_DOMAIN=http://$FLOW_API_DOMAIN:8080
     ports:
       - "3000:80"
     depends_on:
