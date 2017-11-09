@@ -4,7 +4,7 @@ echo "###########环境变量说明###########"
 
 export MYSQL_USER=root
 echo "MYSQL_USER: 配置的Mysql的初始用户名, 默认是 root , 不可修改"
-export JAVA_OPTS="-Xms1536m -Xmx1536m"
+export CATALINA_OPTS="-Xms1536m -Xmx1536m"
 echo "JVM 最大堆大小为 1.5G"
 
 if [[ ! -n $MYSQL_PASSWORD ]]; then
