@@ -6,7 +6,9 @@
 # please mount to /etc/flow.ci to customize  app-api.properties,
 # and app-cc.properties in config folder
 
-FROM flow.ci.git
+
+FROM flowci/flow.git
+FROM tomcat:8.5.16-jre8
 
 # setup flow.ci default environments
 ENV FLOW_PLATFORM_DIR=/etc/flow.ci

@@ -7,7 +7,7 @@
 # and app-cc.properties in config folder
 
 
-FROM tomcat:8.5.16-jre8
+FROM java:8-jre
 
 RUN apt-get update
 RUN apt-get -y install git
