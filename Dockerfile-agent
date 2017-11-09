@@ -6,8 +6,7 @@
 # - FLOW_AGENT_ZONE: agent working zone
 # - FLOW_AGENT_NAME: agent name
 
-FROM java:8-jre
-FROM flow.ci.git
+FROM flowci/flow.git
 
 # setup agent working dir
 ENV FLOW_AGENT_DIR=$HOME/agent
