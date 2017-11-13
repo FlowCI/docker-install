@@ -83,3 +83,14 @@ cd docker
   
   `./start-agent.sh $FLOW_API_DOMAIN $FLOW_TOKEN`
   
+
+
+
+<br/><br/><br/>
+
+<div id="bom">
+<a href="./cf_osx.md">下一节：基于 Mac OS 的安装 </a> | 
+<a href="./quick_iosBuild.md">下一节：iOS 项目构建 </a>
+</div>
+
+<link rel="stylesheet" rev="stylesheet" href="flow.css" type="text/css"/> 
