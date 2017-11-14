@@ -13,7 +13,7 @@ services:
       - "/tmp/mysql:/var/lib/mysql"
 
   flow.ci:
-    image: flow.ci.backend
+    image: flowci/flow.ci.backend
     networks:
       - backend
     environment:
@@ -34,7 +34,7 @@ services:
       - "./docker:/etc/flow.ci/config"
 
   flow.web:
-    image: flow.web
+    image: flowci/flow.web
     networks:
       - backend
     environment:
