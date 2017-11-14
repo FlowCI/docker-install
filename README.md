@@ -70,7 +70,7 @@ cd docker
 
 > 需要替换的环境变量:
 > 
-> - `FLOW_API_DOMAIN`： 为所配置的 API 的域，例如 127.0.0.1
+> - `FLOW_API_DOMAIN`： 为所配置的 API 的域，例如 `127.0.0.1`
 > - `FLOW_TOKEN`:  Agent 启动令牌，如何获取请参见 [ Agent 管理 ](./admin_agent.md)
 
 
