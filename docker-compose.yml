@@ -1,7 +1,7 @@
 version: '2'
 services:
   db:
-    image: mysql:5.6
+    image: flowci/mysql
     networks:
       - backend
     environment:
@@ -9,7 +9,6 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - "./mysql:/etc/mysql/mysql.conf.d"
       - "/tmp/mysql:/var/lib/mysql"
 
   flow.ci:
@@ -30,8 +29,6 @@ services:
       - "2181:2181"
     depends_on:
       - db
-    volumes:
-      - "./docker:/etc/flow.ci/config"
 
   flow.web:
     image: flowci/flow.web
