@@ -7,6 +7,11 @@ echo "MYSQL_USER: 配置的Mysql的初始用户名, 默认是 root , 不可修�
 export CATALINA_OPTS="-Xms1536m -Xmx1536m"
 echo "JVM 最大堆大小为 1.5G"
 
+MYSQL_STORAGE_PATH=~/data/flowci/mysql
+echo "Mysql 的 默认存储路径是 $MYSQL_STORAGE_PATH , 假如您正式部署请选择正确的配置路径"
+
+mkdir -p $MYSQL_STORAGE_PATH
+
 if [[ ! -n $MYSQL_PASSWORD ]]; then
 	export MYSQL_PASSWORD=flow.ci
 fi
