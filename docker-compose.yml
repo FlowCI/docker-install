@@ -9,7 +9,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - "/tmp/mysql:/var/lib/mysql"
+      - "~/data/flowci/mysql:/var/lib/mysql"
 
   flow.ci:
     image: flowci/flow.ci.backend
