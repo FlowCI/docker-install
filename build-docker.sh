@@ -43,7 +43,7 @@ cp $FLOW_PLATFORM_PATH/dist/flow-control-center-*.war ./target/flow-control-cent
 cp $FLOW_PLATFORM_PATH/dist/flow-api-*.war ./target/flow-api.war
 
 # build docker image for flow.ci git
-docker build -t flow.ci.git -f ./Dockerfile-git .
+# docker build -t flow.ci.git -f ./Dockerfile-git .
 
 # build docker image for flow.ci backend
 docker build -t $DOCKER_NAME_FLOWCI -f ./Dockerfile-backend .

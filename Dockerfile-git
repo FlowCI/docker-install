@@ -9,7 +9,7 @@
 
 FROM java:8-jre
 
-RUN apt-get update
-RUN apt-get -y install git
-RUN git config --global user.email "flowci@flow.ci"
-RUN git config --global user.name "flowci"
+RUN apt-get update \
+	&& apt-get -y install git \
+	&& git config --global user.email "flowci@flow.ci" \
+	&& git config --global user.name "flowci"
