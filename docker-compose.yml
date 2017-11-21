@@ -12,7 +12,7 @@ services:
       - "~/data/flowci/mysql:/var/lib/mysql"
 
   flow.ci:
-    image: flow.ci.backend
+    image: flowci/flow.ci.backend
     networks:
       - backend
     environment:

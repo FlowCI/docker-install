@@ -8,7 +8,7 @@
 
 
 FROM flowci/flow.git:latest
-FROM flow.ci.tomcat:latest
+FROM flowci/flow.ci.tomcat:latest
 
 # setup flow.ci default environments
 ENV FLOW_PLATFORM_DIR=/etc/flow.ci
