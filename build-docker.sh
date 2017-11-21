@@ -38,12 +38,19 @@ mvn clean install -DskipTests=true
 
 cd $FLOW_DOCKER_PATH
 # cp target to docker folder
+rm -rf ./target
 mkdir -p ./target
+
 cp $FLOW_PLATFORM_PATH/dist/flow-control-center-*.war ./target/flow-control-center.war
 cp $FLOW_PLATFORM_PATH/dist/flow-api-*.war ./target/flow-api.war
 
+cp -r $FLOW_PLATFORM_PATH/schema/migration ./target
+
 # build docker image for flow.ci git
 # docker build -t flow.ci.git -f ./Dockerfile-git .
+
+# build docker image for flow.ci.tomcat
+# docker build -t flow.ci.tomcat -f ./Dockerfile-mysql-tomcat .
 
 # build docker image for flow.ci backend
 docker build -t $DOCKER_NAME_FLOWCI -f ./Dockerfile-backend .
