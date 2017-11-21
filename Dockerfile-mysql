@@ -1,3 +1,4 @@
+# this docker setting mysql settings
 
 FROM mysql:5.6
 
