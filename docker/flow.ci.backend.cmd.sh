@@ -21,7 +21,7 @@ MIGRATION_PATH=./migration
 
 # use flyway control database structure update
 echo "running migration"
-/flyway/flyway -user=$MYSQL_USER -password=$MYSQL_PASSWORD -baselineOnMigrate=true -locations=filesystem:$MIGRATION_PATH -url=jdbc:mysql://db:3306/flow_api_db migrate
+/flyway/flyway -user=$MYSQL_USER -password=$MYSQL_PASSWORD -baselineOnMigrate=true -baselineVersion=1.1 -locations=filesystem:$MIGRATION_PATH -url=jdbc:mysql://db:3306/flow_api_db migrate
 echo "finish migration"
 
 
