@@ -23,10 +23,10 @@ MIGRATION_PATH=./migration
 echo "running migration"
 
 # run migration to flow_api_db
-/flyway/flyway -user=$MYSQL_USER -password=$MYSQL_PASSWORD -baselineOnMigrate=true -baselineVersion=1.0 -locations=filesystem:$MIGRATION_PATH/api -url=jdbc:mysql://db:3306/flow_api_db migrate
+/flyway/flyway -user=$MYSQL_USER -password=$MYSQL_PASSWORD -ignoreMissingMigrations=true -baselineOnMigrate=true -baselineVersion=1.0 -locations=filesystem:$MIGRATION_PATH/api -url=jdbc:mysql://db:3306/flow_api_db migrate
 
 # run migration to flow_cc_db
-/flyway/flyway -user=$MYSQL_USER -password=$MYSQL_PASSWORD -baselineOnMigrate=true -baselineVersion=1.0 -locations=filesystem:$MIGRATION_PATH/cc -url=jdbc:mysql://db:3306/flow_cc_db  migrate
+/flyway/flyway -user=$MYSQL_USER -password=$MYSQL_PASSWORD -ignoreMissingMigrations=true -baselineOnMigrate=true -baselineVersion=1.0 -locations=filesystem:$MIGRATION_PATH/cc -url=jdbc:mysql://db:3306/flow_cc_db  migrate
 echo "finish migration"
 
 
