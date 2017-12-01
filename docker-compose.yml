@@ -9,7 +9,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - "~/data/flowci/mysql:/var/lib/mysql"
+      - "~/flow-ci/db:/var/lib/mysql"
 
   flow.ci:
     image: flowci/flow.ci.backend
@@ -24,6 +24,8 @@ services:
       FLOW_SYS_PASSWORD: $FLOW_SYS_PASSWORD
       MYSQL_USER: $MYSQL_USER
       MYSQL_PASSWORD: $MYSQL_PASSWORD
+    volumes:
+      - "~/flow-ci/data:/root/flow-ci"
     ports:
       - "8080:8080"
       - "2181:2181"
