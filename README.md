@@ -21,6 +21,8 @@ flowci 在 Docker Hub 上提供了最新的镜像，用户可以方便的获取�
 - 或者直接通过 http 下载的形式下载代码，之后解压缩
 	   
    `curl -L -o docker.zip https://github.com/FlowCI/docker/archive/master.zip`
+   
+> 如果此仓库已经克隆过，在更新版本时需要使用 `git pull https://github.com/FlowCI/docker.git` 获取最新的内容
 
 ### 第二步 从 Docker 启动 flowci
 
@@ -34,8 +36,9 @@ flowci 在 Docker Hub 上提供了最新的镜像，用户可以方便的获取�
 > - `FLOW_SYS_EMAIL`：flowci 系统管理员账号，默认是 `admin@flow.ci `
 > - `FLOW_SYS_USERNAME`：flowci 系统管理员的用户名，默认是 `admin` 
 > - `FLOW_SYS_PASSWORD`: flowci 系统管理员密码，默认是 `123456`
-> - `MYSQL_PASSWORD`： flowci MYSQL 数据库 `root` 用户的密码，默认为 `flowci`, Mysql 的默认存储路径在
- `~/data/flowci/mysql` 如果正式部署请在 docker-compose.yml 修改 Mysql 的数据存储位置
+> - `MYSQL_PASSWORD`： flowci MYSQL 数据库 `root` 用户的密码，默认为 `flowci`, 
+> - `MYSQL 的存储路径`: `~/flow-ci/db` 如果正式部署请在 docker-compose.yml 修改 MYSQL 的数据存储位置
+> - `flow.ci 的数据存储路径`: `~/flow-ci/data` 如果正式部署请在 docker-compose.yml 修改 flow.ci 的数据存储位置
 
 例如：配置的域名为 `yourhost.com`，则可以通过以下命令启动:
 
