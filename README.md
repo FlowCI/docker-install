@@ -16,14 +16,14 @@ flowci 在 Docker Hub 上提供了最新的镜像，用户可以方便的获取�
 	
 - 通过 Git 的形式 Clone 代码，确保机器已经安装了 Git
 	
-	  ```bash 
-	  git clone git@github.com:FlowCI/docker.git
-	  ```
+  ```bash 
+git clone git@github.com:FlowCI/docker.git
+  ```
 	  
 - 直接通过 http 下载的形式下载代码，之后解压缩 
 
   ```bash
-	curl -L -o docker.zip https://github.com/FlowCI/docker/archive/master.zip
+curl -L -o docker.zip https://github.com/FlowCI/docker/archive/master.zip
   ```
    
 > 如果之前克隆过此仓库，在更新版本时需要从 Git 上获取最新的代码: `git pull https://github.com/FlowCI/docker.git`
