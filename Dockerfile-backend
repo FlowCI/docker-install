@@ -7,15 +7,16 @@
 # and app-cc.properties in config folder
 
 
-FROM flowci/flow.git
-FROM tomcat:8.5.16-jre8
+FROM flowci/flow.git:latest
+FROM flowci/flow.ci.tomcat:latest
 
 # setup flow.ci default environments
 ENV FLOW_PLATFORM_DIR=/etc/flow.ci
 ENV FLOW_PLATFORM_CONFIG_DIR=/etc/flow.ci/config
 
-RUN mkdir -p $FLOW_PLATFORM_DIR
-RUN mkdir -p $FLOW_PLATFORM_CONFIG_DIR
+RUN mkdir -p $FLOW_PLATFORM_DIR \
+	mkdir -p $FLOW_PLATFORM_CONFIG_DIR \
+	mkdir -p $FLOW_PLATFORM_DIR/migration
 
 # setup flow.ci default configuration
 COPY ./docker/app-cc.properties $FLOW_PLATFORM_CONFIG_DIR
@@ -24,8 +25,14 @@ COPY ./docker/app-api.properties $FLOW_PLATFORM_CONFIG_DIR
 # config tomcat
 COPY ./docker/tomcat-users.xml $CATALINA_HOME/conf
 
+# wait for mysql 
+COPY ./docker/flow.ci.backend.cmd.sh $FLOW_PLATFORM_DIR
+COPY ./target/migration $FLOW_PLATFORM_DIR/migration
+
 # set wars to tomcat
 COPY ./target/flow-control-center.war $CATALINA_HOME/webapps
 COPY ./target/flow-api.war $CATALINA_HOME/webapps
 
 WORKDIR $FLOW_PLATFORM_DIR
+
+CMD bash ./flow.ci.backend.cmd.sh catalina.sh run

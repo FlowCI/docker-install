@@ -12,4 +12,5 @@ FROM java:8-jre
 RUN apt-get update \
 	&& apt-get -y install git \
 	&& git config --global user.email "flowci@flow.ci" \
-	&& git config --global user.name "flowci"
+	&& git config --global user.name "flowci" \
+	&& apt-get -y install mysql-client

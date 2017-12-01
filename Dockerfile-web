@@ -1,3 +1,5 @@
+# this docker is setting nginx settings
+
 FROM nginx:1.13.6
 
 ENV FLOW_WEB_DIR=/var/www/flow-web
