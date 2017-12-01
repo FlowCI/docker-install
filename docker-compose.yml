@@ -25,7 +25,7 @@ services:
       MYSQL_USER: $MYSQL_USER
       MYSQL_PASSWORD: $MYSQL_PASSWORD
     volumes:
-      - "~/flow-ci/data:~/flow-ci"
+      - "~/flow-ci/data:/root/flow-ci"
     ports:
       - "8080:8080"
       - "2181:2181"
