@@ -33,8 +33,8 @@ flowci 在 Docker Hub 上提供了最新的镜像，用户可以方便的获取�
 > 
 > - `FLOW_API_DOMAIN`： 部署的后端 API 域名地址， 为 8080 端口， 默认：`127.0.0.1`
 > - `FLOW_WEB_DOMAIN`： 部署的前端 Web 页面的域名地址，为 3000 端口，默认：`127.0.0.1`
-> - `FLOW_SYS_EMAIL`：flowci 系统管理员账号，默认是 `admin@flow.ci `
-> - `FLOW_SYS_USERNAME`：flowci 系统管理员的用户名，默认是 `admin` 
+> - `FLOW_SYS_EMAIL`：flowci 系统管理员账号，默认是 `admin@flow.ci `(第一次初始化之后不可修改)
+> - `FLOW_SYS_USERNAME`：flowci 系统管理员的用户名，默认是 `admin` (第一次初始化之后不可修改)
 > - `FLOW_SYS_PASSWORD`: flowci 系统管理员密码，默认是 `123456`
 > - `MYSQL_PASSWORD`： flowci MYSQL 数据库 `root` 用户的密码，默认为 `flowci`, 
 > - `MYSQL 的存储路径`: `~/flow-ci/db` 如果正式部署请在 docker-compose.yml 修改 MYSQL 的数据存储位置
