@@ -2,7 +2,7 @@
 
 ## 安装 Docker 环境
 
-> 具体的安装步骤请查看 [Docker 官方文档](https://docs.docker.com/)
+> 具体的安装步骤请查看 [Docker 官方文档](https://docs.docker-cn.com/engine/installation/)
 
 ## 从 Docker Hub 镜像启动
 
