@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+echo "##############Start Update Docker Images###################"
+docker pull flowci/flow.ci.backend
+docker pull flowci/flow.ci.agent
+docker pull flowci/flow.web
+echo "##############Finish Update Docker Images###################"
+
 echo "###########环境变量说明###########"
 
 export MYSQL_USER=root
