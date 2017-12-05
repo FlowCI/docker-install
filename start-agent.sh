@@ -4,7 +4,7 @@
 
 if [[ ! -n $USE_DOCKER ]]; then
 	echo "###################Start Agent Using jar#######################"
-	java -jar ./agent/flow-agent.jar http://${1}:8080/flow-api $2
+	nohup java -jar ./agent/flow-agent.jar http://${1}:8080/flow-api $2 &
 else
 	if [[ ! -n $DOCKER_IMAGE_AGENT ]]; then
 		export DOCKER_IMAGE_AGENT=flowci/flow.ci.agent
