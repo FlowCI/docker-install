@@ -28,7 +28,6 @@ flowci 在 Docker Hub 上提供了最新的镜像，用户可以方便的获取�
 
 进入到上一步获取的代码目录，并执行 `./start-services.sh`， 之后可以访问 `http://localhost:3000` 进入 flowci。
  
-	
 > 环境变量的设置:
 > 
 > - `FLOW_API_DOMAIN`： 部署的后端 API 域名地址， 为 8080 端口， 默认：`127.0.0.1`
