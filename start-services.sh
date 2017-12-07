@@ -25,7 +25,7 @@ echo "MYSQL_PASSWORD: 配置的Mysql的初始密码, 默认是 flow.ci , 当前�
 if [[ ! -n $MYSQL_HOST ]]; then
 	export MYSQL_HOST=127.0.0.1
 fi
-echo "MYSQL_PASSWORD: 配置的Mysql的HOST地址, 默认是 127.0.0.1 , 当前参数是 $MYSQL_HOST"
+echo "MYSQL_HOST: 配置的Mysql的HOST地址, 默认是 127.0.0.1 , 当前参数是 $MYSQL_HOST"
 
 if [[ ! -n $FLOW_API_DOMAIN ]]; then
 	export FLOW_API_DOMAIN=127.0.0.1
