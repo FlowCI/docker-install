@@ -2,3 +2,4 @@ logs/
 .idea/
 target/
 .DS_Store
+nohup.out

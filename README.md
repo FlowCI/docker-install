@@ -36,6 +36,7 @@ flowci 在 Docker Hub 上提供了最新的镜像，用户可以方便的获取�
 > - `FLOW_SYS_USERNAME`：flowci 系统管理员的用户名，默认是 `admin` (第一次初始化之后不可修改)
 > - `FLOW_SYS_PASSWORD`: flowci 系统管理员密码，默认是 `123456`
 > - `MYSQL_PASSWORD`： flowci MYSQL 数据库 `root` 用户的密码，默认为 `flowci`, 
+> - `MYSQL_HOST`：flowci MYSQL 数据库的HOST，默认是 `127.0.0.1`
 > - `MYSQL 的存储路径`: `~/flow-ci/db` 如果正式部署请在 docker-compose.yml 修改 MYSQL 的数据存储位置
 > - `flow.ci 的数据存储路径`: `~/flow-ci/data` 如果正式部署请在 docker-compose.yml 修改 flow.ci 的数据存储位置
 
