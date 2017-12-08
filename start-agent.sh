@@ -11,9 +11,16 @@ if [[ ! -n $USE_DOCKER ]]; then
 	cd ./agent
 
 	AGENT_FILE_NAME=flow-agent-${AGENT_VERSION}.jar
-	curl https://github.com/flowci/flow-platform/releases/download/${AGENT_VERSION}/${AGENT_FILE_NAME}
+	AGENT_URL=https://github.com/flowci/flow-platform/releases/download/${AGENT_VERSION}/${AGENT_FILE_NAME}
 
-	nohup java -jar ./agent/flow-agent.jar http://${1}:8080/flow-api $2 &
+	# if not exist, download agent from url
+	if [[ ! -f $AGENT_FILE_NAME ]]; then
+		echo "Agent not found, start download from cdn"
+		curl -L -o $AGENT_FILE_NAME $AGENT_URL
+	fi
+
+	# start agent in background
+	nohup java -jar $AGENT_FILE_NAME http://${1}:8080/flow-api $2 &
 else
 	if [[ ! -n $DOCKER_IMAGE_AGENT ]]; then
 		export DOCKER_IMAGE_AGENT=flowci/flow.ci.agent
