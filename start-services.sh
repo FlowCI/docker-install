@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
 echo "##############Start Update Docker Images###################"
-docker pull flowci/flow.ci.backend
-docker pull flowci/flow.ci.agent
-docker pull flowci/flow.web
+docker pull flowci/flow-platform
+docker pull flowci/flow-web
 echo "##############Finish Update Docker Images###################"
 
 echo "###########环境变量说明###########"
@@ -22,6 +21,11 @@ if [[ ! -n $MYSQL_PASSWORD ]]; then
 	export MYSQL_PASSWORD=flow.ci
 fi
 echo "MYSQL_PASSWORD: 配置的Mysql的初始密码, 默认是 flow.ci , 当前参数是 $MYSQL_PASSWORD"
+
+if [[ ! -n $MYSQL_HOST ]]; then
+	export MYSQL_HOST=127.0.0.1
+fi
+echo "MYSQL_HOST: 配置的Mysql的HOST地址, 默认是 127.0.0.1 , 当前参数是 $MYSQL_HOST"
 
 if [[ ! -n $FLOW_API_DOMAIN ]]; then
 	export FLOW_API_DOMAIN=127.0.0.1
