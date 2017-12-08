@@ -60,9 +60,9 @@ FLOW_API_DOMAIN=yourhost.com FLOW_WEB_DOMAIN=yourhost.com ./start-services.sh
 ```bash
 mkdir flowci 
 cd flowci 
-git clone git@github.com:FlowCI/flow-platform.git 
-git clone git@github.com:FlowCI/flow-web.git 
-git clone git@github.com:FlowCI/docker.git 
+git clone https://github.com/FlowCI/docker.git
+git clone https://github.com/FlowCI/flow-web.git 
+git clone https://github.com/FlowCI/docker.git 
 cd docker 
 ./build-docker.sh
 ```
