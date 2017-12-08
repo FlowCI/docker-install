@@ -6,28 +6,16 @@ AGENT_VERSION=v0.1.3-alpha
 
 if [[ ! -n $USE_DOCKER ]]; then
 	echo "###################Start Agent Using jar#######################"
-
-	mkdir -p agent
-	cd ./agent
-
 	AGENT_FILE_NAME=flow-agent-${AGENT_VERSION}.jar
-	AGENT_URL=https://github.com/flowci/flow-platform/releases/download/${AGENT_VERSION}/${AGENT_FILE_NAME}
 
-	# if not exist, download agent from url
-	if [[ ! -f $AGENT_FILE_NAME ]]; then
-		echo "Agent not found, start download from cdn"
-		curl -L -o $AGENT_FILE_NAME $AGENT_URL
-	fi
-
-	# start agent in background
-	nohup java -jar $AGENT_FILE_NAME http://${1}:8080/flow-api $2 &
+	nohup java -jar ./agent/${AGENT_FILE_NAME} http://${1}:8080/flow-api $2 &
 else
 	if [[ ! -n $DOCKER_IMAGE_AGENT ]]; then
-		export DOCKER_IMAGE_AGENT=flowci/flow.ci.agent
+		export DOCKER_IMAGE_AGENT=flowci/flow-agent:latest
 	fi
 	echo "环境变量 DOCKER_IMAGE_AGENT: Agent 的 docker 镜像地址, 默认是官方镜像 flowci/flow.ci.agent, 当前参数值是 $DOCKER_IMAGE_AGENT"
 
-	docker run --network=host -v ~/.ssh:/root/.ssh -e FLOW_BASE_URL=$1/flow-api -e FLOW_TOKEN=$2 -d $DOCKER_IMAGE_AGENT
+	docker run --network=host -v ~/.ssh:/root/.ssh -e FLOW_BASE_URL=http://$1:8080/flow-api -e FLOW_TOKEN=$2 -d $DOCKER_IMAGE_AGENT
 fi
 
 
