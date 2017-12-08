@@ -14,6 +14,7 @@ services:
       FLOW_SYS_PASSWORD: $FLOW_SYS_PASSWORD
       MYSQL_PASSWORD: $MYSQL_PASSWORD
       MYSQL_HOST: $MYSQL_HOST
+      PORT: 8080
     volumes:
       - "~/flow-ci/data:/root/flow-ci"
       - "~/flow-ci/db:/var/lib/mysql"
