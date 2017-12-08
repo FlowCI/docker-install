@@ -45,28 +45,6 @@ flowci 在 Docker Hub 上提供了最新的镜像，用户可以方便的获取�
 ```bash
 FLOW_API_DOMAIN=yourhost.com FLOW_WEB_DOMAIN=yourhost.com ./start-services.sh
 ```
-	
-## 从源代码构建 Docker 镜像并启动 (如果贡献或者修改了源码时会用到这种方式)
-
-除了从 Docker Hub 直接获取 flowci 的镜像之外，用户也可以通过以下命令，从源代码直接构建 Docker 镜像，
-
-> 镜像名称的设置: 
->  在修改镜像名称后，还需要修改 `docker-compose.yml` 中对应的镜像名称
-> 
-> - `DOCKER_NAME_FLOWCI`: flowci 后端 API 的 image 名称，默认 `flowci/flow.ci.backend` 
-> - `DOCKER_NAME_FLOW_WEB`: flowci 前端 Web 的 image 名称，默认 `flowci/flow.web`
-> - `DOCKER_NAME_FLOWCI_AGENT`: flowci Agent 的 image 名称，默认 `flowci/flow.ci.agent` 
-
-
-```bash
-mkdir flowci 
-cd flowci 
-git clone git@github.com:FlowCI/flow-platform.git 
-git clone git@github.com:FlowCI/flow-web.git 
-git clone git@github.com:FlowCI/docker.git 
-cd docker 
-./build-docker.sh
-```
 
 ## 启动 Agent 
 
