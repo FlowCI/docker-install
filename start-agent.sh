@@ -6,14 +6,8 @@ AGENT_VERSION=v0.1.3-alpha
 
 if [[ ! -n $USE_DOCKER ]]; then
 	echo "###################Start Agent Using jar#######################"
-
-	mkdir -p agent
-	cd ./agent
-
 	AGENT_FILE_NAME=flow-agent-${AGENT_VERSION}.jar
-	curl https://github.com/flowci/flow-platform/releases/download/${AGENT_VERSION}/${AGENT_FILE_NAME}
-
-	nohup java -jar ./agent/flow-agent.jar http://${1}:8080/flow-api $2 &
+	nohup java -jar ./agent/${AGENT_FILE_NAME} http://${1}:8080/flow-api $2 &
 else
 	if [[ ! -n $DOCKER_IMAGE_AGENT ]]; then
 		export DOCKER_IMAGE_AGENT=flowci/flow.ci.agent
