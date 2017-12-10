@@ -62,5 +62,8 @@ FLOW_API_DOMAIN=yourhost.com FLOW_WEB_DOMAIN=yourhost.com ./start-services.sh
   > 需要准备 Java 1.8 的环境
   
   `./start-agent.sh $FLOW_API_DOMAIN $FLOW_TOKEN`
+
+### 常见问题
+>- 端口修改，[请查看文档](https://github.com/FlowCI/docs/blob/master/cf_docker.md)
   
 
