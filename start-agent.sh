@@ -13,7 +13,7 @@ if [[ ! -n $USE_DOCKER ]]; then
 	echo "###################Start Agent Using jar#######################"
 	AGENT_FILE_NAME=flow-agent-${AGENT_VERSION}.jar
 
-	nohup java -jar ./agent/${AGENT_FILE_NAME} http://${1}:${PORT}/flow-api $2 &
+	nohup java -jar ./agent/${AGENT_FILE_NAME} http://${1}:${PORT}/flow-api $2 & 
 else
 	if [[ ! -n $DOCKER_IMAGE_AGENT ]]; then
 		export DOCKER_IMAGE_AGENT=flowci/flow-agent:latest
@@ -23,5 +23,5 @@ else
 	docker run --network=host -v ~/.ssh:/root/.ssh -e FLOW_BASE_URL=http://$1:${PORT}/flow-api -e FLOW_TOKEN=$2 -d $DOCKER_IMAGE_AGENT
 fi
 
-
-echo "=============================start agent success============================="
+# show success message
+cat ./success_message.txt
