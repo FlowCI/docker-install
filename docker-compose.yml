@@ -3,6 +3,7 @@ services:
 
   flow.ci:
     image: flowci/flow-platform
+    privileged: true
     networks:
       - backend
     environment:
@@ -18,6 +19,7 @@ services:
     volumes:
       - "~/flow-ci/data:/root/flow-ci"
       - "~/flow-ci/db:/var/lib/mysql"
+      - "~/flow-ci/docker:/var/lib/docker"
     ports:
       - "8080:8080"
       - "2181:2181"
