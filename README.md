@@ -56,11 +56,15 @@ FLOW_API_DOMAIN=yourhost.com FLOW_WEB_DOMAIN=yourhost.com ./start-services.sh
 
 - 以 Docker 方式启动
  
-  `USER_DOCKER=true ./start-agent.sh $FLOW_API_DOMAIN $FLOW_TOKEN`
+  `USE_DOCKER=true ./start-agent.sh $FLOW_API_DOMAIN $FLOW_TOKEN`
 
 - Java 方式启动
   > 需要准备 Java 1.8 的环境
   
   `./start-agent.sh $FLOW_API_DOMAIN $FLOW_TOKEN`
-  
+
+### 常见问题
+>- 端口修改，[请查看文档](https://github.com/FlowCI/docs/blob/master/cf_docker.md)
+>- Mysql启动失败，请检查 docker-compose 挂载的数据库存储目录的权限既`~/flow-ci/db`的权限或者直接在 docker-compose.yml 加上 privileged: true(是使你的docker用户拥有真正的root的权限，建议慎用)
+>- Mysql启动成功但是Tomcat启动失败，请查看 Jvm 堆大小的分配，默认是1.5G可酌情配置 -Xms512M -Xmx512M  
 
