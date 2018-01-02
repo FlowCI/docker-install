@@ -2,7 +2,7 @@
 # example ./start-agent.sh 127.0.0.1 cfc4a6f1-a2ea-4263-83b2-5f68eadaecbe
 # example USER_DOCKER=true ./start-agent.sh 127.0.0.1 cfc4a6f1-a2ea-4263-83b2-5f68eadaecbe
 
-AGENT_VERSION=v0.1.3-alpha
+AGENT_VERSION=v0.1.4-alpha
 
 # set default port, default is 8080
 if [[ ! -n $PORT ]]; then
