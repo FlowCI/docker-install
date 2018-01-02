@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 echo "##############Start Update Docker Images###################"
-docker pull flowci/flow-platform
-docker pull flowci/flow-web
+docker pull flowci/flow-platform:latest
+docker pull flowci/flow-web:latest
 echo "##############Finish Update Docker Images###################"
 
 echo "###########环境变量说明###########"

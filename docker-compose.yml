@@ -2,7 +2,7 @@ version: '2'
 services:
 
   flow.ci:
-    image: flowci/flow-platform
+    image: flowci/flow-platform:latest
     privileged: true
     networks:
       - backend
@@ -21,12 +21,13 @@ services:
       - "~/flow-ci/db:/var/lib/mysql"
       - "~/flow-ci/git-cache:/root/flow-ci/git-cache"
       - "~/flow-ci/git-repos:/root/flow-ci/git-repos"
+      - "~/flow-ci/repository:/root/.m2/repository"
     ports:
       - "8080:8080"
       - "2181:2181"
 
   flow.web:
-    image: flowci/flow-web
+    image: flowci/flow-web:latest
     networks:
       - backend
     environment:
