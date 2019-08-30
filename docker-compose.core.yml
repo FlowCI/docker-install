@@ -37,6 +37,13 @@ services:
       FLOWCI_MONGODB_URI: mongodb://db:27017/flow_ci_db
       FLOWCI_RABBITMQ_URI: amqp://guest:guest@rabbitmq:5672
       FLOWCI_ZK_HOST: zk
+    command: [
+      "./wait_for_it.sh", 
+      "rabbitmq:5672", 
+      "-t", "0", 
+      "--strict", "--",
+      "java", "-jar", "flow-ci-core.jar"
+    ]
     depends_on:
       - rabbitmq
       - db
