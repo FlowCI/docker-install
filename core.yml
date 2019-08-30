@@ -3,7 +3,7 @@
 ##### Environment Variables #####
 ## FLOWCI_SERVER_HOST##
 ## FLOWCI_RABBIT_HOST ##
-## FLOWCI_ZK_HOST ##
+## FLOWCI_ZOOKEEPER_HOST ##
 
 version: '3'
 services:
