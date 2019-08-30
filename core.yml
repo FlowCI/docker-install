@@ -1,7 +1,9 @@
 ## Docker-Compose file is used to start flow.ci with two agents
 
 ##### Environment Variables #####
-## FLOWCI_SERVER_DOMAIN ##
+## FLOWCI_SERVER_HOST##
+## FLOWCI_RABBIT_HOST ##
+## FLOWCI_ZK_HOST ##
 
 version: '3'
 services:
@@ -58,4 +60,4 @@ services:
     ports:
       - "2015:2015"
     environment:
-      FLOWCI_SERVER_URL: http://${FLOWCI_SERVER_DOMAIN}:8080
+      FLOWCI_SERVER_URL: http://${FLOWCI_SERVER_HOST}:8080
