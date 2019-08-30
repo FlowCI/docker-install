@@ -1,0 +1,51 @@
+## Docker-Compose file is used to start flow.ci with two agents
+
+version: '3'
+services:
+  db:
+    image: mongo:3.6
+    restart: always
+    container_name: flowci-db
+    ports:
+      - "27017:27017"
+
+  zk:
+    image: zookeeper:3.4
+    container_name: flowci-zk
+    restart: always
+    ports:
+      - "2181:2181"
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: flowci-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  core:
+    image: flowci/core
+    container_name: flowci-core
+    ports:
+      - "8080:8080"
+    environment:
+      FLOWCI_LOG_LEVEL: DEBUG
+      FLOWCI_SERVER_PORT: 8080
+      FLOWCI_SERVER_ADDRESS: 127.0.0.1
+      FLOWCI_DEFAULT_ADMIN_EMAIL: admin@flow.ci
+      FLOWCI_DEFAULT_ADMIN_PASSWORD: 12345
+      FLOWCI_MONGODB_URI: mongodb://db:27017/flow_ci_db
+      FLOWCI_RABBITMQ_URI: amqp://guest:guest@rabbitmq:5672
+      FLOWCI_ZK_HOST: zk
+    depends_on:
+      - rabbitmq
+      - db
+      - zk
+
+  web:
+    image: flowci/web
+    container_name: flowci-web
+    ports:
+      - "2015:2015"
+    environment:
+      FLOWCI_API_URL: http://core:8080
