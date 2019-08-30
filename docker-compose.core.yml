@@ -1,5 +1,8 @@
 ## Docker-Compose file is used to start flow.ci with two agents
 
+##### Environment Variables #####
+## FLOWCI_SERVER_DOMAIN ##
+
 version: '3'
 services:
   db:
@@ -31,7 +34,7 @@ services:
     environment:
       FLOWCI_LOG_LEVEL: DEBUG
       FLOWCI_SERVER_PORT: 8080
-      FLOWCI_SERVER_ADDRESS: 127.0.0.1
+      FLOWCI_SERVER_ADDRESS: 0.0.0.0
       FLOWCI_DEFAULT_ADMIN_EMAIL: admin@flow.ci
       FLOWCI_DEFAULT_ADMIN_PASSWORD: 12345
       FLOWCI_MONGODB_URI: mongodb://db:27017/flow_ci_db
@@ -55,4 +58,8 @@ services:
     ports:
       - "2015:2015"
     environment:
-      FLOWCI_API_URL: http://core:8080
+      FLOWCI_API_URL: http://${FLOWCI_SERVER_DOMAIN}:8080
+
+  test:
+    image: ubuntu:18.04
+    container_name: flowci-test
