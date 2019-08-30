@@ -58,4 +58,4 @@ services:
     ports:
       - "2015:2015"
     environment:
-      FLOWCI_API_URL: http://${FLOWCI_SERVER_DOMAIN}:8080
+      FLOWCI_SERVER_URL: http://${FLOWCI_SERVER_DOMAIN}:8080
