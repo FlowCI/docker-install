@@ -59,7 +59,3 @@ services:
       - "2015:2015"
     environment:
       FLOWCI_API_URL: http://${FLOWCI_SERVER_DOMAIN}:8080
-
-  test:
-    image: ubuntu:18.04
-    container_name: flowci-test
