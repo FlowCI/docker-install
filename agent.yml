@@ -1,8 +1,0 @@
-version: '3'
-services:
-  agent:
-    image: flowci/agent
-    environment:
-      FLOWCI_AGENT_PORT: 7001
-      FLOWCI_SERVER_URL: http://172.20.10.4:8080
-      FLOWCI_AGENT_TOKEN: 776c7fe2-7131-4d11-a2f5-308fc58eba73
