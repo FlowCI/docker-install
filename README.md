@@ -35,6 +35,16 @@
 - `{password}` (Optional): Default admin password. 
     > `123456` will be default value if this argument not dfined
 
+#### Default ports
+
+- `8080`: core service
+- `2015`: web
+- `27017`: database
+- `2181`: zookeeper
+- `5672` & `15672`: rabbitmq
+
+> The ports are exposed to host can be changed from `server.yml`
+
 #### Example
 
 ```bash
@@ -42,7 +52,12 @@
 ./start-server.sh 172.20.10.4 admin@flow.ci 1qaz@WSX
 ```
 
+#### Test It
+
+Login with admin email and password on `http://{host}:2015`
+
 ## Start flow.ci Agent
 
-- Create Agent
-- 
+- Create
+
+- Start
