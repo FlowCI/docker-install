@@ -1,0 +1,73 @@
+## Docker-Compose file is used to start flow.ci with two agents
+
+##### Environment Variables #####
+## FLOWCI_SERVER_HOST##
+## FLOWCI_RABBIT_HOST ##
+## FLOWCI_ZOOKEEPER_HOST ##
+
+version: '3'
+services:
+  db:
+    image: mongo:3.6
+    restart: always
+    container_name: flowci-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - "${HOME}/.flow.ci/db:/data/db"
+
+  zk:
+    image: zookeeper:3.4
+    container_name: flowci-zk
+    restart: always
+    ports:
+      - "2181:2181"
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: flowci-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  core:
+    image: flowci/core
+    container_name: flowci-core
+    ports:
+      - "8080:8080"
+    volumes:
+      - "${HOME}/.flow.ci:/root/.flow.ci"
+    environment:
+      FLOWCI_LOG_LEVEL: DEBUG
+      FLOWCI_SERVER_PORT: 8080
+      FLOWCI_SERVER_ADDRESS: 0.0.0.0
+      FLOWCI_DEFAULT_ADMIN_EMAIL: $FLOWCI_DEFAULT_ADMIN_EMAIL
+      FLOWCI_DEFAULT_ADMIN_PASSWORD: $FLOWCI_DEFAULT_ADMIN_PASSWORD
+      FLOWCI_MONGODB_URI: mongodb://db:27017/flow_ci_db
+      FLOWCI_RABBITMQ_URI: amqp://guest:guest@rabbitmq:5672
+      FLOWCI_ZK_HOST: zk
+
+      # config host for agent
+      FLOWCI_SERVER_HOST: $FLOWCI_SERVER_HOST
+      FLOWCI_RABBIT_HOST: $FLOWCI_RABBIT_HOST
+      FLOWCI_ZOOKEEPER_HOST: $FLOWCI_ZOOKEEPER_HOST
+    command: [
+      "./wait_for_it.sh", 
+      "rabbitmq:5672", 
+      "-t", "0", 
+      "--strict", "--",
+      "java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", 
+      "-Xms1500m", "-Xmx1500m", "-jar", "flow-ci-core.jar"
+    ]
+    depends_on:
+      - rabbitmq
+      - db
+      - zk
+
+  web:
+    image: flowci/web
+    container_name: flowci-web
+    ports:
+      - "2015:2015"
+    environment:
+      FLOWCI_SERVER_URL: http://${FLOWCI_SERVER_HOST}:8080
