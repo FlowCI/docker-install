@@ -61,10 +61,10 @@ Login with admin email and password on `http://{host}:2015`
 - Per-install envrionments
   - git: `2.17.1`
   - java: openjdk `1.8.0_222`
-  - mvn: `3.6.1`
+  - mvn: `3.5.4`
   - nvm: `0.34.0`
   - node: `v10.16.3`
-  - 
+  - go: `1.12.9`
 
 - Create Agent from admin page
   - Open web page: `http://{host}:2015/#/settings/agents` and click add
