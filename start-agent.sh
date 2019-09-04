@@ -7,7 +7,7 @@
 ### HINT: The "localhost" or "127.0.0.1" is NOT applicable for argument {server ip}
 
 FLOWCI_SERVER_HOST=$1
-FLOWCI_SERVER_HOST=8080
+FLOWCI_SERVER_PORT=8080
 FLOWCI_AGENT_TOKEN=$2
 
 if [[ ! -n $FLOWCI_SERVER_HOST ]]; then
@@ -21,7 +21,7 @@ if [[ ! -n $FLOWCI_AGENT_TOKEN ]]; then
 fi
 
 docker run \
--e FLOWCI_SERVER_URL=http://$FLOWCI_SERVER_HOST:$FLOWCI_SERVER_HOST \
+-e FLOWCI_SERVER_URL=http://$FLOWCI_SERVER_HOST:$FLOWCI_SERVER_PORT \
 -e FLOWCI_AGENT_TOKEN=$FLOWCI_AGENT_TOKEN \
 -v $HOME/.flow.ci.agent:/root/.flow.ci.agent \
 flowci/agent
