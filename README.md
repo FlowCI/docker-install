@@ -56,6 +56,9 @@
 
 Login with admin email and password on `http://{host}:2015`
 
+![](https://github.com/flowci/files/raw/master/imgs/start_server.gif)
+
+
 ## Start flow.ci Agent
 
 - Per-install envrionments
@@ -68,16 +71,16 @@ Login with admin email and password on `http://{host}:2015`
 
 - Create Agent from admin page
   - Open web page: `http://{host}:2015/#/settings/agents` and click add
-    ![](./imgs/agent_add_click.png)
+    ![](https://github.com/flowci/files/raw/master/imgs/agent_add_click.png)
   - Fill in agent name.
   - Fill in agent tag and click '+' button to add.
   - Click 'save' button
-    ![](./imgs/agent_save_new.png)
+    ![](https://github.com/flowci/files/raw/master/imgs/agent_save_new.png)
 
 - Start
   - Click 'copy' button to copy the token
     
-    ![](./imgs/agent_copy_token.png)
+    ![](.https://github.com/flowci/files/raw/master/imgs/agent_copy_token.png)
 
   - Start from command: `start-agent.sh {host} {token}`
     - `{host}`: the host or ip address of server
