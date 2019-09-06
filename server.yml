@@ -15,6 +15,9 @@ services:
       - "27017:27017"
     volumes:
       - "${HOME}/.flow.ci/db:/data/db"
+    networks:
+      flowci_net:
+        ipv4_address: 172.1.3.1
 
   zk:
     image: zookeeper:3.4
@@ -22,6 +25,9 @@ services:
     restart: always
     ports:
       - "2181:2181"
+    networks:
+      flowci_net:
+        ipv4_address: 172.1.3.2
 
   rabbitmq:
     image: rabbitmq:3-management
@@ -29,6 +35,9 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
+    networks:
+      flowci_net:
+        ipv4_address: 172.1.3.3
 
   core:
     image: flowci/core
@@ -63,6 +72,9 @@ services:
       - rabbitmq
       - db
       - zk
+    networks:
+      flowci_net:
+        ipv4_address: 172.1.2.1
 
   web:
     image: flowci/web
@@ -71,3 +83,13 @@ services:
       - "2015:2015"
     environment:
       FLOWCI_SERVER_URL: http://${FLOWCI_SERVER_HOST}:8080
+    networks:
+      flowci_net:
+        ipv4_address: 172.1.1.1
+
+networks:
+  flowci_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.1.0.0/16"

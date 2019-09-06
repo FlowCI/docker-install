@@ -24,5 +24,5 @@ docker run \
 -e FLOWCI_SERVER_URL=http://$FLOWCI_SERVER_HOST:$FLOWCI_SERVER_PORT \
 -e FLOWCI_AGENT_TOKEN=$FLOWCI_AGENT_TOKEN \
 -v $HOME/.flow.ci.agent:/root/.flow.ci.agent \
--v /var/run/docker.sock:/var/run/docker.sock
+-v /var/run/docker.sock:/var/run/docker.sock \
 flowci/agent
