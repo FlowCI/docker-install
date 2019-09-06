@@ -14,7 +14,11 @@
     git clone https://github.com/FlowCI/docker.git
     ```
 
-## Start flow.ci Service
+## Start Service
+
+Login with admin email and password on `http://{host}:2015`
+
+![](https://github.com/flowci/files/raw/master/imgs/start_server.gif)
 
 ### Command to start service
 
@@ -52,39 +56,38 @@
 ./start-server.sh 172.20.10.4 admin@flow.ci 1qaz@WSX
 ```
 
-### Test It
+## Start Agent
 
-Login with admin email and password on `http://{host}:2015`
+![](https://github.com/flowci/files/raw/master/imgs/start_agent.gif)
 
-## Start flow.ci Agent
+### Create Agent from admin page
 
-- Per-install envrionments
-  - git: `2.17.1`
-  - java: openjdk `1.8.0_222`
-  - mvn: `3.5.4`
-  - nvm: `0.34.0`
-  - node: `v10.16.3`
-  - go: `1.12.9`
+- Open web page: `http://{host}:2015/#/settings/agents` and click add
+  ![](https://github.com/flowci/files/raw/master/imgs/agent_add_click.png)
+- Fill in agent name.
+- Fill in agent tag and click '+' button to add.
+- Click 'save' button
+  ![](https://github.com/flowci/files/raw/master/imgs/agent_save_new.png)
 
-- Create Agent from admin page
-  - Open web page: `http://{host}:2015/#/settings/agents` and click add
-    ![](./imgs/agent_add_click.png)
-  - Fill in agent name.
-  - Fill in agent tag and click '+' button to add.
-  - Click 'save' button
-    ![](./imgs/agent_save_new.png)
+### Start
 
-- Start
-  - Click 'copy' button to copy the token
-    
-    ![](./imgs/agent_copy_token.png)
+- Click 'copy' button to copy the token
+  ![](.https://github.com/flowci/files/raw/master/imgs/agent_copy_token.png)
 
-  - Start from command: `start-agent.sh {host} {token}`
-    - `{host}`: the host or ip address of server
-    - `{token}`: the agent token copied from admin page
-    - example:
+- Start from command: `start-agent.sh {host} {token}`
+  - `{host}`: the host or ip address of server
+  - `{token}`: the agent token copied from admin page
+  - example:
 
-    ```bash
-    ./start-agent.sh 172.20.10.4 c2a957b7-5d09-4aa8-8d4f-90a0c2ee1392
-    ```
-  
+  ```bash
+  ./start-agent.sh 172.20.10.4 c2a957b7-5d09-4aa8-8d4f-90a0c2ee1392
+  ```
+
+### Per-install envrionments
+
+- git: `2.17.1`
+- java: openjdk `1.8.0_222`
+- mvn: `3.5.4`
+- nvm: `0.34.0`
+- node: `v10.16.3`
+- go: `1.12.9`
