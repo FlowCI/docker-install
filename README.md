@@ -18,7 +18,7 @@
 
 Login with admin email and password on `http://{host}:2015`
 
-![](https://github.com/flowci/files/raw/master/imgs/start_server.gif)
+![](https://github.com/FlowCI/docs/raw/master/v1.0/img/start_server.gif)
 
 ### Command to start service
 
@@ -58,21 +58,21 @@ Login with admin email and password on `http://{host}:2015`
 
 ## Start Agent
 
-![](https://github.com/flowci/files/raw/master/imgs/start_agent.gif)
+![](https://github.com/FlowCI/docs/raw/master/v1.0/img/start_agent.gif)
 
 ### Create Agent from admin page
 
 - Open web page: `http://{host}:2015/#/settings/agents` and click add
-  ![](https://github.com/flowci/files/raw/master/imgs/agent_add_click.png)
+  ![](https://github.com/FlowCI/docs/raw/master/v1.0/img/agent_add_click.png)
 - Fill in agent name.
 - Fill in agent tag and click '+' button to add.
 - Click 'save' button
-  ![](https://github.com/flowci/files/raw/master/imgs/agent_save_new.png)
+  ![](https://github.com/FlowCI/docs/raw/master/v1.0/img/agent_save_new.png)
 
 ### Start
 
 - Click 'copy' button to copy the token
-  ![](.https://github.com/flowci/files/raw/master/imgs/agent_copy_token.png)
+  ![](https://github.com/FlowCI/docs/raw/master/v1.0/img/agent_copy_token.png)
 
 - Start from command: `start-agent.sh {host} {token}`
   - `{host}`: the host or ip address of server
