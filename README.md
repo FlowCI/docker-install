@@ -20,7 +20,7 @@ Login with admin email and password on `http://{host}:2015`
 
 ![](https://github.com/FlowCI/docs/raw/master/v1.0/img/start_server.gif)
 
-### Command to start service
+### 1. Command to start service
 
 ```bash
 ## cd to docker dir which has been cloned
@@ -30,7 +30,7 @@ Login with admin email and password on `http://{host}:2015`
 ./start-server.sh {host} {email} {password}
 ```
 
-### Arguments
+### 2. Arguments
 
 - `{host}`: The host domain or ip address, find it by `ifconfig`.
     > Hint: It doesn't work for `127.0.0.1` or `localhost`
@@ -39,7 +39,7 @@ Login with admin email and password on `http://{host}:2015`
 - `{password}` (Optional): Default admin password. 
     > `123456` will be default value if this argument not dfined
 
-### Default ports
+### 3. Default ports
 
 - `8080`: core service
 - `2015`: web
@@ -49,7 +49,7 @@ Login with admin email and password on `http://{host}:2015`
 
 > The ports are exposed to host can be changed from `server.yml`
 
-### Example
+### 4. Example
 
 ```bash
 ## Start with host, define admin email and password
@@ -60,7 +60,7 @@ Login with admin email and password on `http://{host}:2015`
 
 ![](https://github.com/FlowCI/docs/raw/master/v1.0/img/start_agent.gif)
 
-### Create Agent from admin page
+### 1. Create Agent from admin page
 
 - Open web page: `http://{host}:2015/#/settings/agents` and click add
   ![](https://github.com/FlowCI/docs/raw/master/v1.0/img/agent_add_click.png)
@@ -69,7 +69,7 @@ Login with admin email and password on `http://{host}:2015`
 - Click 'save' button
   ![](https://github.com/FlowCI/docs/raw/master/v1.0/img/agent_save_new.png)
 
-### Start
+### 2. Start
 
 - Click 'copy' button to copy the token
   ![](https://github.com/FlowCI/docs/raw/master/v1.0/img/agent_copy_token.png)
@@ -83,7 +83,7 @@ Login with admin email and password on `http://{host}:2015`
   ./start-agent.sh 172.20.10.4 c2a957b7-5d09-4aa8-8d4f-90a0c2ee1392
   ```
 
-### Per-install envrionments
+### 3. Per-install envrionments
 
 - git: `2.17.1`
 - java: openjdk `1.8.0_222`
