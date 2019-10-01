@@ -1,14 +1,12 @@
-# Getting Started from Docker
+# Install from Docker within 5 mins
 
 ## Per-requirements
 
-- [docker](https://docs.docker.com/install/)
+- [Docker](https://docs.docker.com/install/) installed
 
-- [docker-compose](https://docs.docker.com/compose/install/)
+- [Docker-Compose](https://docs.docker.com/compose/install/) installed
 
-- Clone 'docker' repo
-
-    To make sure the script and docker compose file can be found
+- Clone this 'docker' repo (make sure the scripts and docker compose file are available)
 
     ```bash
     git clone https://github.com/FlowCI/docker.git
@@ -16,11 +14,7 @@
 
 ## Start Service
 
-Login with admin email and password on `http://{host}:2015`
-
-![](https://github.com/FlowCI/docs/raw/master/v1.0/img/start_server.gif)
-
-### 1. Command to start service
+### 1. Run command to start service
 
 ```bash
 ## cd to docker dir which has been cloned
@@ -30,16 +24,19 @@ Login with admin email and password on `http://{host}:2015`
 ./start-server.sh {host} {email} {password}
 ```
 
-### 2. Arguments
-
 - `{host}`: The host domain or ip address, find it by `ifconfig`.
     > Hint: It doesn't work for `127.0.0.1` or `localhost`
 - `{email}` (Optional): Default admin email.
     > `admin@flow.ci` will be default value if this argument not defined.
 - `{password}` (Optional): Default admin password. 
     > `123456` will be default value if this argument not dfined
+    
+Login with admin email and password on `http://{host}:2015`
 
-### 3. Default ports
+![](https://github.com/FlowCI/docs/raw/master/v1.0/img/start_server.gif)
+
+
+ Default ports
 
 - `8080`: core service
 - `2015`: web
@@ -49,7 +46,7 @@ Login with admin email and password on `http://{host}:2015`
 
 > The ports are exposed to host can be changed from `server.yml`
 
-### 4. Example
+### 2. Example
 
 ```bash
 ## Start with host, define admin email and password
