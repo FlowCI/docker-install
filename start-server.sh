@@ -16,6 +16,12 @@ export FLOWCI_ZOOKEEPER_HOST=$1
 export FLOWCI_DEFAULT_ADMIN_EMAIL=$2
 export FLOWCI_DEFAULT_ADMIN_PASSWORD=$3
 
+## To define where to store the data of ci server in host
+export FLOWCI_SERVER_DIR=$HOME/.flow.ci
+export FLOWCI_SERVER_DB_DIR=$FLOWCI_SERVER_DIR/db
+mkdir -p $FLOWCI_SERVER_DIR
+mkdir -p $FLOWCI_SERVER_DB_DIR
+
 if [[ ! -n $1 ]]; then
 	echo "[ERROR]: The host domain name or ip must be defined"
 	exit 1
