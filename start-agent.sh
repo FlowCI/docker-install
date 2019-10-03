@@ -24,9 +24,9 @@ if [[ ! -n $FLOWCI_AGENT_TOKEN ]]; then
 	exit 1
 fi
 
-docker run \
+docker run -it \
 -e FLOWCI_SERVER_URL=http://$FLOWCI_SERVER_HOST:$FLOWCI_SERVER_PORT \
 -e FLOWCI_AGENT_TOKEN=$FLOWCI_AGENT_TOKEN \
 -v $FLOWCI_AGENT_HOST_DIR:/root/.flow.ci.agent \
---privileged=true \
+-v /var/run/docker.sock:/var/run/docker.sock \
 flowci/agent
