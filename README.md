@@ -14,7 +14,7 @@
 
 ## Start Service
 
-### 1. Run command to start service
+### 1. Start from command
 
 ```bash
 ## cd to docker dir which has been cloned
@@ -36,15 +36,16 @@ Login with admin email and password on `http://{host}:2015`
 ![](https://github.com/FlowCI/docs/raw/master/v1.0/img/start_server.gif)
 
 
- Default ports
+ Default Settings
 
-- `8080`: core service
-- `2015`: web
-- `27017`: database
-- `2181`: zookeeper
-- `5672` & `15672`: rabbitmq
+- Port `8080`: core service
+- Port `2015`: web
+- Port `27017`: database
+- Port `2181`: zookeeper
+- Port `5672` & `15672`: rabbitmq
+- where to store the data: `${HOME}/.flow.ci`
 
-> The ports are exposed to host can be changed from `server.yml`
+> The default ports are exposed to host and data path can be changed from [server.yml](./server.yml) and [start-server.sh](./start-server.sh)
 
 ### 2. Example
 
@@ -66,7 +67,7 @@ Login with admin email and password on `http://{host}:2015`
 - Click 'save' button
   ![](https://github.com/FlowCI/docs/raw/master/v1.0/img/agent_save_new.png)
 
-### 2. Start
+### 2. Start from command
 
 - Click 'copy' button to copy the token
   ![](https://github.com/FlowCI/docs/raw/master/v1.0/img/agent_copy_token.png)
@@ -79,6 +80,13 @@ Login with admin email and password on `http://{host}:2015`
   ```bash
   ./start-agent.sh 172.20.10.4 c2a957b7-5d09-4aa8-8d4f-90a0c2ee1392
   ```
+
+Default Settings
+
+- Port: the default port for ci server is `8080`
+- Where to store the data: default path is `${HOME}/.flow.ci.agent`
+
+> those settings could be changed from [start-agent.sh](./start-agent.sh)
 
 ### 3. Per-install envrionments
 
