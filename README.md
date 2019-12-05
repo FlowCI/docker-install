@@ -1,6 +1,7 @@
 # Install from Docker within 5 mins
 
 ## Per-requirements
+- Mac or Linux (Windows not suported yet) 
 
 - [Docker](https://docs.docker.com/install/) installed
 
