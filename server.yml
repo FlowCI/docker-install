@@ -39,6 +39,21 @@ services:
       flowci_net:
         ipv4_address: 172.1.3.3
 
+  minio:
+    image: minio/minio
+    container_name: flowci-minio
+    environment:
+      MINIO_ACCESS_KEY: $FLOWCI_DEFAULT_MINIO_ACCESS_KEY
+      MINIO_SECRET_KEY: $FLOWCI_DEFAULT_MINIO_SECRET_KEY
+    ports:
+      - "9000:9000"
+    volumes:
+      - "$FLOWCI_SERVER_DATA_DIR:/data"
+    command: server /data
+    networks:
+      flowci_net:
+        ipv4_address: 172.1.3.4
+
   core:
     image: flowci/core
     container_name: flowci-core
@@ -47,13 +62,16 @@ services:
     volumes:
       - "$FLOWCI_SERVER_DIR:/root/.flow.ci"
     environment:
-      FLOWCI_LOG_LEVEL: DEBUG
+      FLOWCI_LOG_LEVEL: INFO
       FLOWCI_SERVER_PORT: 8080
       FLOWCI_SERVER_ADDRESS: 0.0.0.0
       FLOWCI_DEFAULT_ADMIN_EMAIL: $FLOWCI_DEFAULT_ADMIN_EMAIL
       FLOWCI_DEFAULT_ADMIN_PASSWORD: $FLOWCI_DEFAULT_ADMIN_PASSWORD
       FLOWCI_MONGODB_URI: mongodb://db:27017/flow_ci_db
       FLOWCI_RABBITMQ_URI: amqp://guest:guest@rabbitmq:5672
+      FLOWCI_MINIO_ENDPOINT: http://minio:9000
+      FLOWCI_MINIO_KEY: $FLOWCI_DEFAULT_MINIO_ACCESS_KEY
+      FLOWCI_MINIO_SECRET: $FLOWCI_DEFAULT_MINIO_SECRET_KEY
       FLOWCI_ZK_HOST: zk
 
       # config host for agent
@@ -72,6 +90,7 @@ services:
       - rabbitmq
       - db
       - zk
+      - minio
     networks:
       flowci_net:
         ipv4_address: 172.1.2.1
