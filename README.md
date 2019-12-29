@@ -43,6 +43,7 @@ Login with admin email and password on `http://{host}:2015`
 - Port `27017`: database
 - Port `2181`: zookeeper
 - Port `5672` & `15672`: rabbitmq
+- Port `9000`: minio
 - where to store the data: `${HOME}/.flow.ci`
 
 > The default ports are exposed to host and data path can be changed from [server.yml](./server.yml) and [start-server.sh](./start-server.sh)
@@ -88,7 +89,7 @@ Default Settings
 
 > those settings could be changed from [start-agent.sh](./start-agent.sh)
 
-### 3. Per-install envrionments
+### 3. Per-installed envrionments
 
 - git: `2.17.1`
 - java: openjdk `1.8.0_222`
