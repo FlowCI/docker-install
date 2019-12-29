@@ -15,12 +15,14 @@ FLOWCI_AGENT_HOST_DIR=$HOME/.flow.ci.agent
 mkdir -p $FLOWCI_AGENT_HOST_DIR
 
 if [[ ! -n $FLOWCI_SERVER_HOST ]]; then
-	echo "[ERROR] Server host is required, ex: ./start-agent.sh 172.20.10.4 cfc4a6f1-a2ea-4263-83b2-5f68eadaecbe"
+	echo "[ERROR] Server host is missing, ./start-agent.sh {server host} {agent token}"
+	echo "Example: ./start-agent.sh 172.20.10.4 cfc4a6f1-a2ea-4263-83b2-5f68eadaecbe"
 	exit 1
 fi
 
 if [[ ! -n $FLOWCI_AGENT_TOKEN ]]; then
-	echo "[ERROR] Agent token is required, ex: ./start-agent.sh 172.20.10.4 cfc4a6f1-a2ea-4263-83b2-5f68eadaecbe"
+	echo "[ERROR] Agent token is missing, ./start-agent.sh {server host} {agent token}"
+	echo "Example: ./start-agent.sh 172.20.10.4 cfc4a6f1-a2ea-4263-83b2-5f68eadaecbe"
 	exit 1
 fi
 
