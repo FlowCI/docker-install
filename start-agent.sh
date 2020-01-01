@@ -26,9 +26,25 @@ if [[ ! -n $FLOWCI_AGENT_TOKEN ]]; then
 	exit 1
 fi
 
-docker run -it \
--e FLOWCI_SERVER_URL=http://$FLOWCI_SERVER_HOST:$FLOWCI_SERVER_PORT \
--e FLOWCI_AGENT_TOKEN=$FLOWCI_AGENT_TOKEN \
--v $FLOWCI_AGENT_HOST_DIR:/root/.flow.ci.agent \
--v /var/run/docker.sock:/var/run/docker.sock \
-flowci/agent
+CONTAINER_NAME="flowci-agent-$FLOWCI_AGENT_TOKEN"
+RUNNING_CONTAINER=$(docker ps -aq -f name=$CONTAINER_NAME -f status=running)
+EXISTED_CONTAINER=$(docker ps -aq -f name=$CONTAINER_NAME -f status=exited)
+
+if [[ -n $RUNNING_CONTAINER ]]; then
+	
+	echo "Agent with token $FLOWCI_AGENT_TOKEN is running"
+
+elif [[ -n $EXISTED_CONTAINER ]]; then
+	
+	echo "Agent with token $FLOWCI_AGENT_TOKEN will restarted"
+	docker start -i $EXISTED_CONTAINER
+
+else
+	docker run -it \
+	--name $CONTAINER_NAME \
+	-e FLOWCI_SERVER_URL=http://$FLOWCI_SERVER_HOST:$FLOWCI_SERVER_PORT \
+	-e FLOWCI_AGENT_TOKEN=$FLOWCI_AGENT_TOKEN \
+	-v $FLOWCI_AGENT_HOST_DIR:/root/.flow.ci.agent \
+	-v /var/run/docker.sock:/var/run/docker.sock \
+	flowci/agent
+fi

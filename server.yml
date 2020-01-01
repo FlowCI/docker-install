@@ -1,4 +1,4 @@
-## Docker-Compose file is used to start flow.ci with two agents
+## Docker-Compose file is used to start flow.ci services
 
 ##### Environment Variables #####
 ## FLOWCI_SERVER_HOST##
