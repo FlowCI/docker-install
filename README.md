@@ -16,24 +16,25 @@
 
 ## Start Service
 
-### 1. Start from command
-
 ```bash
-## cd to docker dir which has been cloned
-##
-## example: cd ${HOME}/docker
+./server.sh start
 
-./start-server.sh {host} {email} {password}
+# Usage: ./server.sh [OPTIONS] COMMAND
+
+# Example: ./server.sh -h 172.20.2.1 -e admin@flow.ci -p yourpassword start
+
+# Options:
+#  -h	 Host ip address
+#  -e	 Default admin email
+#  -p	 Default admin password
+
+# Commands:
+#  start	 start ci server
+#  stop	 stop ci server
+#  clean	 remove ci server containers
+#  help	 print help message
+
 ```
-
-- `{host}`: The host domain or ip address, find it by `ifconfig`.
-    > Hint: It doesn't work for `127.0.0.1` or `localhost`
-- `{email}` (Optional): Default admin email.
-    > `admin@flow.ci` will be default value if this argument not defined.
-- `{password}` (Optional): Default admin password. 
-    > `123456` will be default value if this argument not dfined
-    
-Login with admin email and password on `http://{host}:2015`
 
 ![](https://github.com/FlowCI/docs/raw/master/v1.0/img/start_server.gif)
 
@@ -50,12 +51,6 @@ Login with admin email and password on `http://{host}:2015`
 
 > The default ports are exposed to host and data path can be changed from [server.yml](./server.yml) and [start-server.sh](./start-server.sh)
 
-### 2. Example
-
-```bash
-## Start with host, define admin email and password
-./start-server.sh 172.20.10.4 admin@flow.ci 1qaz@WSX
-```
 
 ## Start Agent
 
