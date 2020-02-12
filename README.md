@@ -49,7 +49,7 @@
 - Port `9000`: minio
 - where to store the data: `${HOME}/.flow.ci`
 
-> The default ports are exposed to host and data path can be changed from [server.yml](./server.yml) and [start-server.sh](./start-server.sh)
+> The default ports are exposed to host and data path can be changed from [server.yml](./server.yml) and [start-server.sh](./server.sh)
 
 
 ## Start Agent
