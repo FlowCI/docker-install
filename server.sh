@@ -20,7 +20,7 @@ printHelp()
 	echo "Commands:"
 	echo -e " start\t start ci server"
 	echo -e " stop\t stop ci server"
-	echo -e " clean\t remove ci server containers"
+	echo -e " down\t remove ci server containers"
 	echo -e " help\t print help message"
 	
    	exit 1 # Exit script after printing help
@@ -109,7 +109,7 @@ case $COMMAND in
 		docker-compose -f server.yml stop
 		;;
 
-	clean)
+	down)
 		initEnv
 		docker-compose -f server.yml down
 		;;
