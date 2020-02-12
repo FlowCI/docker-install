@@ -20,6 +20,7 @@ printHelp()
 	echo "Commands:"
 	echo -e " start\t start ci server"
 	echo -e " stop\t stop ci server"
+	echo -e " clean\t remove ci server containers"
 	echo -e " help\t print help message"
 	
    	exit 1 # Exit script after printing help
@@ -63,6 +64,7 @@ printInfo()
 	echo "HOW TO:"
 	echo -e "- Open Web UI:\t http://$FLOWCI_SERVER_HOST:$FLOWCI_WEB_PORT"
 	echo -e "- Start Agent:\t ./start-agent.sh $FLOWCI_SERVER_URL your_agent_token"
+	echo ""
 }
 
 setDefaultValue()
@@ -99,11 +101,18 @@ case $COMMAND in
 		setDefaultValue
 		initEnv
 		printInfo
-		docker-compose -f server.yml up
+		docker-compose -f server.yml up -d
 		;;
 
 	stop)
-	;;
+		initEnv
+		docker-compose -f server.yml stop
+		;;
+
+	clean)
+		initEnv
+		docker-compose -f server.yml down
+		;;
 
 	*)
 		printHelp
