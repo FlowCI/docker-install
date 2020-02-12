@@ -67,27 +67,32 @@
 
 ### 2. Start from command
 
-- Click 'copy' button to copy the token
-  ![](https://github.com/FlowCI/docs/raw/master/v1.0/img/agent_copy_token.png)
+Click 'copy' button to copy the token
+![](https://github.com/FlowCI/docs/raw/master/v1.0/img/agent_copy_token.png)
 
-- Start from command: `start-agent.sh {host} {token}`
-  - `{host}`: the host or ip address of server
-  - `{token}`: the agent token copied from admin page
-  - example:
 
-  ```bash
-  ./start-agent.sh 172.20.10.4 c2a957b7-5d09-4aa8-8d4f-90a0c2ee1392
-  ```
+Run script `./agent.sh`
 
-Default Settings
+```bash
+./agent.sh -u ci_server -t token_your_copied start
 
-- Port: the default port for ci server is `8080`
-- Where to store the data: default path is `${HOME}/.flow.ci.agent`
+# Usage: ./agent.sh [OPTIONS] COMMAND
 
-> those settings could be changed from [start-agent.sh](./start-agent.sh)
+# Example: ./agent.sh -t tokenfromciserver -u http://172.20.10.4:8080 start
 
-### 3. Per-installed envrionments
+# Options:
+#  -t      Agent token from ci server
+#  -u      Server url
 
+# Commands:
+#  start   start an agent
+#  stop    stop an agnet
+#  clean   remove agent container
+#  help    print help message
+```
+
+
+Per-installed envrionments
 - git: `2.17.1`
 - java: openjdk `1.8.0_222`
 - mvn: `3.5.4`
