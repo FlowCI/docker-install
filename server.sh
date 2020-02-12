@@ -63,7 +63,7 @@ printInfo()
 	echo ""
 	echo "HOW TO:"
 	echo -e "- Open Web UI:\t http://$FLOWCI_SERVER_HOST:$FLOWCI_WEB_PORT"
-	echo -e "- Start Agent:\t ./start-agent.sh $FLOWCI_SERVER_URL your_agent_token"
+	echo -e "- Start Agent:\t ./agent.sh -u $FLOWCI_SERVER_URL -t your_agent_token start"
 	echo ""
 }
 
