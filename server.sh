@@ -61,9 +61,9 @@ printInfo()
 	echo "[INFO] Admin Password:	$FLOWCI_DEFAULT_ADMIN_PASSWORD"
 
 	echo ""
-	echo "HOW TO:"
-	echo -e "- Open Web UI:\t http://$FLOWCI_SERVER_HOST:$FLOWCI_WEB_PORT"
-	echo -e "- Start Agent:\t ./agent.sh -u $FLOWCI_SERVER_URL -t your_agent_token start"
+	echo -e "\xF0\x9f\x8d\xba  HOW TO:"
+	echo -e "\xF0\x9F\x91\x89   Open Web UI:\t http://$FLOWCI_SERVER_HOST:$FLOWCI_WEB_PORT"
+	echo -e "\xF0\x9F\x91\x89   Start Agent:\t ./agent.sh -u $FLOWCI_SERVER_URL -t your_agent_token start"
 	echo ""
 }
 
