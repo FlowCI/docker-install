@@ -70,11 +70,11 @@ printInfo()
 setDefaultValue()
 {
 	if [[ ! -n $HOST ]]; then
-		if [[ $OSTYPE == "darwin*" ]]; then
+		if [[ $OSTYPE == "darwin"* ]]; then
 			HOST=$(ipconfig getifaddr en0)
 			echo "[WARN]: Host ip not defined, using ip $HOST"
 		
-		elif [[ $OSTYPE == "linux*" ]]; then
+		elif [[ $OSTYPE == "linux"* ]]; then
 			interface=$(awk '$2 == 00000000 { print $1 }' /proc/net/route| head -1)
 			HOST=$(ip addr show ${interface} 2>/dev/null| grep "inet\b" | awk '{print $2}' | cut -d/ -f1)
 			echo "[WARN]: Host ip not defined, using ip $HOST"
