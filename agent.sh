@@ -14,6 +14,7 @@ printHelp()
 	echo "Options:"
 	echo -e " -t\t Agent token from ci server"
    	echo -e " -u\t Server url"
+	echo -e " -m\t Start agent by docker or binary"
 
 	echo ""
 	echo "Commands:"

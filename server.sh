@@ -70,9 +70,19 @@ printInfo()
 setDefaultValue()
 {
 	if [[ ! -n $HOST ]]; then
-		interface=$(awk '$2 == 00000000 { print $1 }' /proc/net/route| head -1)
-		HOST=$(ip addr show ${interface} 2>/dev/null| grep "inet\b" | awk '{print $2}' | cut -d/ -f1)
-		echo "[WARN]: Host ip not defined, using ip $HOST"
+		if [[ $OSTYPE == "darwin"* ]]; then
+			HOST=$(ipconfig getifaddr en0)
+			echo "[WARN]: Host ip not defined, using ip $HOST"
+		
+		elif [[ $OSTYPE == "linux*" ]]; then
+			interface=$(awk '$2 == 00000000 { print $1 }' /proc/net/route| head -1)
+			HOST=$(ip addr show ${interface} 2>/dev/null| grep "inet\b" | awk '{print $2}' | cut -d/ -f1)
+			echo "[WARN]: Host ip not defined, using ip $HOST"
+
+		else 
+			echo "[WARN]: Host ip addr cannot detected, please specify ip or host name by -h your_ip_or_host_name"
+			exit 1
+		fi
 	fi
 
 	if [[ ! -n $EMAIL ]]; then
