@@ -70,7 +70,7 @@ printInfo()
 setDefaultValue()
 {
 	if [[ ! -n $HOST ]]; then
-		if [[ $OSTYPE == "darwin"* ]]; then
+		if [[ $OSTYPE == "darwin*" ]]; then
 			HOST=$(ipconfig getifaddr en0)
 			echo "[WARN]: Host ip not defined, using ip $HOST"
 		
