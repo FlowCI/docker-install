@@ -96,6 +96,15 @@ setDefaultValue()
 	fi
 }
 
+pullAgentImage()
+{
+	img=$(docker images flowci/agent:latest --format "{{.ID}}")
+	if [[ ! -n $img ]]; then
+		echo "[INFO] Pull agent docker image.."
+		docker pull flowci/agent:latest
+	fi
+}
+
 while getopts ":h:e:p" arg; do
   case $arg in
     h) HOST=$OPTARG;;
@@ -108,6 +117,7 @@ COMMAND="${@: -1}"
 
 case $COMMAND in
 	start)
+		pullAgentImage
 		setDefaultValue
 		initEnv
 		printInfo
