@@ -8,7 +8,7 @@ printHelp()
    	echo "Usage: $0 [OPTIONS] COMMAND"
 
 	echo ""
-	echo "Example: ./agent.sh -t tokenfromciserver -u http://172.20.10.4:8080 start"
+	echo "Example: ./agent.sh -t token_from_ci_server -u http://172.20.10.4:8080 start"
 
 	echo ""
 	echo "Options:"
@@ -57,10 +57,14 @@ start()
 		docker start -i $EXISTED_CONTAINER
 
 	else
+		docker volume create pyenv
+		docker run --rm -v pyenv:/ws flowci/pyenv:1.0 bash -c "~/init-pyenv-volume.sh"
+
 		docker run -it \
 		--name $CONTAINER_NAME \
 		-e FLOWCI_SERVER_URL=$URL \
 		-e FLOWCI_AGENT_TOKEN=$TOKEN \
+		-e FLOWCI_AGENT_VOLUMES="name=pyenv,dest=/ci/python,script=init.sh" \
 		-v $AGENT_HOST_DIR:/root/.flow.ci.agent \
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		flowci/agent
