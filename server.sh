@@ -48,6 +48,9 @@ initEnv()
 	export FLOWCI_SERVER_DB_DIR=$FLOWCI_SERVER_DIR/db
 	export FLOWCI_SERVER_DATA_DIR=$FLOWCI_SERVER_DIR/data
 
+	## set agnet volumes for local auto agent
+	export FLOWCI_AGENT_VOLUMES="name=pyenv,dest=/ci/python,script=init.sh"
+
 	mkdir -p $FLOWCI_SERVER_DIR
 	mkdir -p $FLOWCI_SERVER_DB_DIR
 	mkdir -p $FLOWCI_SERVER_DATA_DIR
@@ -105,6 +108,12 @@ pullAgentImage()
 	fi
 }
 
+setPyenvForLocalAgent() 
+{
+	docker volume create pyenv
+	docker run --rm -v pyenv:/ws flowci/pyenv:1.0 bash -c "~/init-pyenv-volume.sh"
+}
+
 while getopts ":h:e:p" arg; do
   case $arg in
     h) HOST=$OPTARG;;
@@ -121,6 +130,7 @@ case $COMMAND in
 		setDefaultValue
 		initEnv
 		printInfo
+		setPyenvForLocalAgent
 		docker-compose -f server.yml up -d
 		;;
 
