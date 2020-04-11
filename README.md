@@ -19,21 +19,7 @@
 ```bash
 ./server.sh start
 
-# Usage: ./server.sh [OPTIONS] COMMAND
-
-# Example: ./server.sh -h 172.20.2.1 -e admin@flow.ci -p yourpassword start
-
-# Options:
-#  -h	 Host ip address
-#  -e	 Default admin email
-#  -p	 Default admin password
-
-# Commands:
-#  start	 start ci server
-#  stop	 stop ci server
-#  clean	 remove ci server containers
-#  help	 print help message
-
+# ./server.sh help for more detail
 ```
 
 ![](https://github.com/FlowCI/docs/raw/master/v1.0/img/start_server.gif)
@@ -50,7 +36,6 @@
 - where to store the data: `${HOME}/.flow.ci`
 
 > The default ports are exposed to host and data path can be changed from [server.yml](./server.yml) and [start-server.sh](./server.sh)
-
 
 ## Start Agent
 
@@ -75,27 +60,4 @@ Run script `./agent.sh`
 
 ```bash
 ./agent.sh -u ci_server -t token_your_copied start
-
-# Usage: ./agent.sh [OPTIONS] COMMAND
-
-# Example: ./agent.sh -t tokenfromciserver -u http://172.20.10.4:8080 start
-
-# Options:
-#  -t      Agent token from ci server
-#  -u      Server url
-
-# Commands:
-#  start   start an agent
-#  stop    stop an agnet
-#  clean   remove agent container
-#  help    print help message
 ```
-
-
-Per-installed envrionments
-- git: `2.17.1`
-- java: openjdk `1.8.0_222`
-- mvn: `3.5.4`
-- nvm: `0.34.0`
-- node: `v10.16.3`
-- go: `1.12.9`
