@@ -1,4 +1,4 @@
-# Install from Docker within 5 mins
+# Install from Docker in 2 mins
 
 ## Per-requirements
 
