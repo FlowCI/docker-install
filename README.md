@@ -11,7 +11,7 @@
 - Clone this 'docker' repo (make sure the scripts and docker compose file are available)
 
     ```bash
-    git clone https://github.com/FlowCI/docker.git
+    git clone https://github.com/FlowCI/docker-install.git
     ```
 
 ## Start Service
