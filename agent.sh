@@ -58,7 +58,7 @@ start()
 
 	else
 		docker volume create pyenv
-		docker run --rm -v pyenv:/target flowci/pyenv:1.2 bash -c "/ws/init-pyenv-volume.sh"
+		docker run --rm -v pyenv:/target flowci/pyenv:1.3 bash -c "/ws/init-pyenv-volume.sh"
 
 		docker run -it \
 		--name $CONTAINER_NAME \
