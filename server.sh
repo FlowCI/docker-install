@@ -43,17 +43,8 @@ initEnv()
 	export FLOWCI_DEFAULT_MINIO_ACCESS_KEY=minio
 	export FLOWCI_DEFAULT_MINIO_SECRET_KEY=minio123
 
-	## To define where to store the data of ci server in host
-	export FLOWCI_SERVER_DIR=$HOME/.flow.ci
-	export FLOWCI_SERVER_DB_DIR=$FLOWCI_SERVER_DIR/db
-	export FLOWCI_SERVER_DATA_DIR=$FLOWCI_SERVER_DIR/data
-
 	## set agnet volumes for local auto agent
 	export FLOWCI_AGENT_VOLUMES="name=pyenv,dest=/ci/python,script=init.sh"
-
-	mkdir -p $FLOWCI_SERVER_DIR
-	mkdir -p $FLOWCI_SERVER_DB_DIR
-	mkdir -p $FLOWCI_SERVER_DATA_DIR
 }
 
 printInfo()

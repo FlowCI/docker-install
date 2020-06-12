@@ -5,14 +5,15 @@
 ## FLOWCI_RABBIT_HOST ##
 ## FLOWCI_ZOOKEEPER_HOST ##
 
-version: '3'
+version: '3.4'
+
 services:
   db:
     image: mongo:3.6
     restart: always
     container_name: flowci-db
     volumes:
-      - "$FLOWCI_SERVER_DB_DIR:/data/db"
+      - "db-data:/data/db"
     ports:
       - "27017:27017"
     networks:
@@ -45,7 +46,7 @@ services:
       MINIO_ACCESS_KEY: $FLOWCI_DEFAULT_MINIO_ACCESS_KEY
       MINIO_SECRET_KEY: $FLOWCI_DEFAULT_MINIO_SECRET_KEY
     volumes:
-      - "$FLOWCI_SERVER_DATA_DIR:/data"
+      - "minio-data:/data"
     command: server /data
     networks:
       flowci_net:
@@ -57,7 +58,7 @@ services:
     ports:
       - "$FLOWCI_SERVER_PORT:8080"
     volumes:
-      - "$FLOWCI_SERVER_DIR:/root/.flow.ci"
+      - "core-ws:/root/.flow.ci"
       - "/var/run/docker.sock:/var/run/docker.sock"
     environment:
       FLOWCI_LOG_LEVEL: DEBUG
@@ -102,6 +103,14 @@ services:
     networks:
       flowci_net:
         ipv4_address: 172.1.1.1
+
+volumes:
+  core-ws:
+    name: flow-ci-ws
+  db-data:
+    name: flow-ci-db
+  minio-data:
+    name: flow-ci-minio
 
 networks:
   flowci_net:
