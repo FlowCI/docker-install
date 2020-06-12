@@ -111,7 +111,7 @@ pullAgentImage()
 setPyenvForLocalAgent() 
 {
 	docker volume create pyenv
-	docker run --rm -v pyenv:/ws flowci/pyenv:1.3 bash -c "~/init-pyenv-volume.sh"
+	docker run --rm -v pyenv:/ws flowci/pyenv:1.3 bash -c "/ws/init-pyenv-volume.sh"
 }
 
 while getopts ":h:e:p" arg; do
