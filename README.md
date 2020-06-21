@@ -22,7 +22,7 @@
 # ./server.sh help for more detail
 ```
 
-![](https://github.com/FlowCI/docs/raw/master/v1.0/img/start_server.gif)
+![](https://github.com/FlowCI/docs/raw/master/src/start_server.gif)
 
 
 After all services started, open web browser with url 'http://localhost:2015', adn type admin username (default: `admin@flow.ci`) and password (default: `example`) to login.
