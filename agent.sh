@@ -67,6 +67,7 @@ start()
 		-e FLOWCI_AGENT_VOLUMES="name=pyenv,dest=/ci/python,script=init.sh" \
 		-e FLOWCI_AGENT_WORKSPACE="/ws" \
 		-v $AGENT_HOST_DIR:/ws \
+		-v pyenv:/ci/python \
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		flowci/agent
 	fi
