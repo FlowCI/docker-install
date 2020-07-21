@@ -81,8 +81,8 @@ services:
       "rabbitmq:5672", 
       "-t", "0", 
       "--strict", "--",
-      "java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", 
-      "-Xms1500m", "-Xmx1500m", "-jar", "flow-ci-core.jar"
+      "java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-XX:-UseAdaptiveSizePolicy",
+      "-Xms1500m", "-Xmx1500m", "-Xmn900m", "-XX:SurvivorRatio=5", "-jar", "flow-ci-core.jar"
     ]
     depends_on:
       - rabbitmq
