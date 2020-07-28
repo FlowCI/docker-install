@@ -8,15 +8,11 @@
 
 - [Docker-Compose](https://docs.docker.com/compose/install/) installed
 
-- Clone this 'docker' repo (make sure the scripts and docker compose file are available)
-
-    ```bash
-    git clone https://github.com/FlowCI/docker-install.git
-    ```
-
 ## Getting Started
 
 ```bash
+git clone https://github.com/FlowCI/docker-install.git flow-docker
+cd flow-docker
 ./server.sh start
 
 # ./server.sh help for more detail
