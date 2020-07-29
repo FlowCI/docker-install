@@ -28,23 +28,35 @@ printHelp()
 
 initEnv() 
 {
+	## $HOST is the ip address of host, it can be gained from setDefaultValue func automatically
 	export FLOWCI_SERVER_HOST=$HOST
 	export FLOWCI_RABBIT_HOST=$HOST
 	export FLOWCI_ZOOKEEPER_HOST=$HOST
 
+	## setup ports
+	export FLOWCI_WEB_PORT=2015
 	export FLOWCI_SERVER_PORT=8080
 	export FLOWCI_SERVER_URL="http://$FLOWCI_SERVER_HOST:$FLOWCI_SERVER_PORT"
 
-	export FLOWCI_WEB_PORT=2015
-
+	## setup default admin
 	export FLOWCI_DEFAULT_ADMIN_EMAIL=$EMAIL
 	export FLOWCI_DEFAULT_ADMIN_PASSWORD=$PASSWORD
 
+	## setup minio keys
 	export FLOWCI_DEFAULT_MINIO_ACCESS_KEY=minio
 	export FLOWCI_DEFAULT_MINIO_SECRET_KEY=minio123
 
-	## set agnet volumes for local auto agent
+	## setup agnet volumes for local auto agent
 	export FLOWCI_AGENT_VOLUMES="name=pyenv,dest=/ci/python,script=init.sh"
+
+	## setup data path
+	export FLOWCI_DATABASE_DIR="$HOME/.flowci/db"
+	export FLOWCI_WORKSPACE_DIR="$HOME/.flowci/ws"
+	export FLOWCI_DATA_DIR="$HOME/.flowci/data"
+
+	mkdir -p $FLOWCI_DATABASE_DIR
+	mkdir -p $FLOWCI_WORKSPACE_DIR
+	mkdir -p $FLOWCI_DATA_DIR
 }
 
 printInfo()
