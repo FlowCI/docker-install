@@ -13,8 +13,6 @@ printHelp()
 	echo ""
 	echo "Options:"
 	echo -e " -h\t Host ip address"
-   	echo -e " -e\t Default admin email"
-   	echo -e " -p\t Default admin password"
 
 	echo ""
 	echo "Commands:"
@@ -38,10 +36,6 @@ initEnv()
 	export FLOWCI_SERVER_PORT=8080
 	export FLOWCI_SERVER_URL="http://$FLOWCI_SERVER_HOST:$FLOWCI_SERVER_PORT"
 
-	## setup default admin
-	export FLOWCI_DEFAULT_ADMIN_EMAIL=$EMAIL
-	export FLOWCI_DEFAULT_ADMIN_PASSWORD=$PASSWORD
-
 	## setup minio keys
 	export FLOWCI_DEFAULT_MINIO_ACCESS_KEY=minio
 	export FLOWCI_DEFAULT_MINIO_SECRET_KEY=minio123
@@ -63,8 +57,6 @@ printInfo()
 {
 	echo ""
 	echo "[INFO] Server URL:	$FLOWCI_SERVER_URL"
-	echo "[INFO] Admin Email:	$FLOWCI_DEFAULT_ADMIN_EMAIL"
-	echo "[INFO] Admin Password:	$FLOWCI_DEFAULT_ADMIN_PASSWORD"
 
 	echo ""
 	echo -e "\xF0\x9f\x8d\xba  HOW TO:"
@@ -90,16 +82,6 @@ setDefaultValue()
 			exit 1
 		fi
 	fi
-
-	if [[ ! -n $EMAIL ]]; then
-		echo "[WARN]: Admin email not defined, using 'admin@flow.ci' as admin email"
-		EMAIL="admin@flow.ci"
-	fi
-
-	if [[ ! -n $PASSWORD ]]; then
-		echo "[WARN]: Admin password not defined, using 'example' as admin password"
-		PASSWORD="example"
-	fi
 }
 
 pullAgentImage()
@@ -120,8 +102,6 @@ setPyenvForLocalAgent()
 while getopts ":h:e:p" arg; do
   case $arg in
     h) HOST=$OPTARG;;
-    e) EMAIL=$OPTARG;;
-    p) PASSWORD=$OPTARG;;
   esac
 done
 
