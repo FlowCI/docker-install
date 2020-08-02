@@ -8,7 +8,7 @@ printHelp()
    	echo "Usage: $0 [OPTIONS] COMMAND"
 
 	echo ""
-	echo "Example: ./server.sh -h 172.20.2.1 -e admin@flow.ci -p yourpassword start"
+	echo "Example: ./server.sh -h 172.20.2.1 start"
 
 	echo ""
 	echo "Options:"
