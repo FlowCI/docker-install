@@ -8,13 +8,13 @@ printHelp()
    	echo "Usage: $0 [OPTIONS] COMMAND"
 
 	echo ""
-	echo "Example: ./agent.sh -t token_from_ci_server -u http://172.20.10.4:8080 start"
+	echo "Example: ./agent.sh -u http://172.20.10.4:8080 -t token_from_ci_server -m docker start"
 
 	echo ""
 	echo "Options:"
 	echo -e " -t\t Agent token from ci server"
    	echo -e " -u\t Server url"
-	echo -e " -m\t Start agent by docker or binary"
+	echo -e " -m\t Start agent by <docker> or <binary>"
 
 	echo ""
 	echo "Commands:"
