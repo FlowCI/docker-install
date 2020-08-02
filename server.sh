@@ -99,7 +99,7 @@ setPyenvForLocalAgent()
 	docker run --rm -v pyenv:/target flowci/pyenv:1.3 bash -c "/ws/init-pyenv-volume.sh"
 }
 
-while getopts ":h:e:p" arg; do
+while getopts ":h:" arg; do
   case $arg in
     h) HOST=$OPTARG;;
   esac
