@@ -90,7 +90,7 @@ services:
     image: flowci/web
     container_name: flowci-web
     ports:
-      - "$FLOWCI_WEB_PORT:2015"
+      - "$FLOWCI_WEB_PORT:80"
     environment:
       FLOWCI_SERVER_URL: $FLOWCI_SERVER_URL
     networks:
