@@ -15,11 +15,19 @@ spec:
       labels:
         app: flow-ci-db
     spec:
+      volumes:
+        - name: data
+          hostPath:
+            path: /flowci/db
+            type: DirectoryOrCreate
       containers:
         - name: db
           image: mongo:4.2
           ports:
             - containerPort: 27017
+          volumeMounts:
+            - mountPath: /data/db
+              name: data
           resources:
             requests:
               memory: "256Mi"
