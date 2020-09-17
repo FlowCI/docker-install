@@ -1,4 +1,5 @@
 # minio
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -15,6 +16,11 @@ spec:
       labels:
         app: flow-ci-minio
     spec:
+      volumes:
+        - name: data
+          hostPath:
+            path: /flowci/minio
+            type: DirectoryOrCreate
       containers:
         - name: minio
           image: minio/minio:RELEASE.2020-05-01T22-19-14Z
@@ -28,6 +34,9 @@ spec:
             - "/data"
           ports:
             - containerPort: 9000
+          volumeMounts:
+            - name: data 
+              mountPath: "/data"
           resources:
             requests:
               memory: "256Mi"
@@ -35,3 +44,15 @@ spec:
             limits:
               memory: "256Mi"
               cpu: "200m"
+          readinessProbe:
+            httpGet:
+              path: /minio/health/ready
+              port: 9000
+            initialDelaySeconds: 120
+            periodSeconds: 20
+          livenessProbe:
+            httpGet:
+              path: /minio/health/live
+              port: 9000
+            initialDelaySeconds: 120
+            periodSeconds: 20
