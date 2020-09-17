@@ -1,19 +1,32 @@
 # rabbit
+apiVersion: v1
+kind: Service
+metadata:
+  name: flowci-mq-service
+spec:
+  selector:
+    app: flowci-mq
+  ports:
+    - protocol: TCP
+      port: 5672
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flow-ci-mq-deployment
+  name: flowci-mq-deployment
   labels:
-    app: flow-ci-mq
+    app: flowci-mq
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: flow-ci-mq
+      app: flowci-mq
   template:
     metadata:
       labels:
-        app: flow-ci-mq
+        app: flowci-mq
     spec:
       containers:
         - name: mq

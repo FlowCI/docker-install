@@ -28,8 +28,6 @@ initEnv()
 {
 	## $HOST is the ip address of host, it can be gained from setDefaultValue func automatically
 	export FLOWCI_SERVER_HOST=$HOST
-	export FLOWCI_RABBIT_HOST=$HOST
-	export FLOWCI_ZOOKEEPER_HOST=$HOST
 
 	## setup ports
 	export FLOWCI_WEB_PORT=2015

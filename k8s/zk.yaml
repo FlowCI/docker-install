@@ -1,19 +1,32 @@
 # zk
+apiVersion: v1
+kind: Service
+metadata:
+  name: flowci-zk-service
+spec:
+  selector:
+    app: flowci-zk
+  ports:
+    - protocol: TCP
+      port: 2181
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flow-ci-zk-deployment
+  name: flowci-zk-deployment
   labels:
-    app: flow-ci-zk
+    app: flowci-zk
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: flow-ci-zk
+      app: flowci-zk
   template:
     metadata:
       labels:
-        app: flow-ci-zk
+        app: flowci-zk
     spec:
       containers:
         - name: zk

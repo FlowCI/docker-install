@@ -65,10 +65,6 @@ services:
       FLOWCI_MINIO_SECRET: $FLOWCI_DEFAULT_MINIO_SECRET_KEY
       FLOWCI_ZK_HOST: zk
       FLOWCI_AGENT_VOLUMES: $FLOWCI_AGENT_VOLUMES
-
-      # config host for agent
-      FLOWCI_RABBIT_HOST: $FLOWCI_RABBIT_HOST
-      FLOWCI_ZOOKEEPER_HOST: $FLOWCI_ZOOKEEPER_HOST
     command: [
       "./wait_for_it.sh", 
       "rabbitmq:5672", 

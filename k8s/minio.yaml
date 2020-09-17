@@ -1,20 +1,32 @@
 # minio
+apiVersion: v1
+kind: Service
+metadata:
+  name: flowci-minio-service
+spec:
+  selector:
+    app: flowci-minio
+  ports:
+    - protocol: TCP
+      port: 9000
+
+---
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flow-ci-minio-deployment
+  name: flowci-minio-deployment
   labels:
-    app: flow-ci-minio
+    app: flowci-minio
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: flow-ci-minio
+      app: flowci-minio
   template:
     metadata:
       labels:
-        app: flow-ci-minio
+        app: flowci-minio
     spec:
       volumes:
         - name: data

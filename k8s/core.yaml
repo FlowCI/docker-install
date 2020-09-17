@@ -1,11 +1,4 @@
-# zk
-
-# minio
-
-# rabbitmq
-
-
-# core deployment
+# core
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -31,23 +24,19 @@ spec:
             - name: FLOWCI_SERVER_URL
               value: "TODO"
             - name: FLOWCI_MONGODB_URI
-              value: mongodb://db:27017/flow_ci_db
+              value: mongodb://flowci-db-service:27017/flow_ci_db
             - name: FLOWCI_RABBITMQ_URI
-              value: amqp://guest:guest@rabbitmq:5672
+              value: amqp://guest:guest@flowci-mq-service:5672
             - name: FLOWCI_MINIO_ENDPOINT
-              value: http://minio:9000
+              value: http://flowci-minio-service:9000
             - name: FLOWCI_MINIO_KEY
-              value: $FLOWCI_DEFAULT_MINIO_ACCESS_KEY
+              value: minio
             - name: FLOWCI_MINIO_SECRET
-              value: $FLOWCI_DEFAULT_MINIO_SECRET_KEY
+              value: minio123
             - name: FLOWCI_ZK_HOST
-              value: zk
+              value: flowci-zk-service
             - name: FLOWCI_AGENT_VOLUMES
-              value: $FLOWCI_AGENT_VOLUMES
-            - name: FLOWCI_RABBIT_HOST
-              value: $FLOWCI_RABBIT_HOST
-            - name: FLOWCI_ZOOKEEPER_HOST
-              value: $FLOWCI_ZOOKEEPER_HOST
+              value: "name=pyenv,dest=/ci/python,script=init.sh,image=flowci/pyenv:1.3,init=init-pyenv-volume.sh"
           command: [
             "./wait_for_it.sh", 
             "rabbitmq:5672", 

@@ -1,19 +1,32 @@
 # mongodb
+apiVersion: v1
+kind: Service
+metadata:
+  name: flowci-db-service
+spec:
+  selector:
+    app: flowci-db
+  ports:
+    - protocol: TCP
+      port: 27017
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flow-ci-db-deployment
+  name: flowci-db-deployment
   labels:
-    app: flow-ci-db
+    app: flowci-db
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: flow-ci-db
+      app: flowci-db
   template:
     metadata:
       labels:
-        app: flow-ci-db
+        app: flowci-db
     spec:
       volumes:
         - name: data
