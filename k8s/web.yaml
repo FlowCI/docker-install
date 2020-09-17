@@ -1,0 +1,32 @@
+# web
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flow-ci-web-deployment
+  labels:
+    app: flow-ci-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flow-ci-web
+  template:
+    metadata:
+      labels:
+        app: flow-ci-web
+    spec:
+      containers:
+        - name: web
+          image: flowci/web:dev
+          env:
+            - name: FLOWCI_SERVER_URL
+              value: TODO
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "500m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"

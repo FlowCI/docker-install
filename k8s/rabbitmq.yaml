@@ -1,0 +1,29 @@
+# rabbit
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flow-ci-mq-deployment
+  labels:
+    app: flow-ci-mq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flow-ci-mq
+  template:
+    metadata:
+      labels:
+        app: flow-ci-mq
+    spec:
+      containers:
+        - name: mq
+          image: rabbitmq:3-management
+          ports:
+            - containerPort: 5672
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "200m"
+            limits:
+              memory: "128Mi"
+              cpu: "200m"

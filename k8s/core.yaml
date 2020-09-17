@@ -1,0 +1,68 @@
+# zk
+
+# minio
+
+# rabbitmq
+
+
+# core deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flow-ci-core-deployment
+  labels:
+    app: flow-ci-core
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flow-ci-core
+  template:
+    metadata:
+      labels:
+        app: flow-ci-core
+    spec:
+      containers:
+        - name: core
+          image: flowci/core:dev
+          env:
+            - name: FLOWCI_LOG_LEVEL
+              value: DEBUG
+            - name: FLOWCI_SERVER_URL
+              value: "TODO"
+            - name: FLOWCI_MONGODB_URI
+              value: mongodb://db:27017/flow_ci_db
+            - name: FLOWCI_RABBITMQ_URI
+              value: amqp://guest:guest@rabbitmq:5672
+            - name: FLOWCI_MINIO_ENDPOINT
+              value: http://minio:9000
+            - name: FLOWCI_MINIO_KEY
+              value: $FLOWCI_DEFAULT_MINIO_ACCESS_KEY
+            - name: FLOWCI_MINIO_SECRET
+              value: $FLOWCI_DEFAULT_MINIO_SECRET_KEY
+            - name: FLOWCI_ZK_HOST
+              value: zk
+            - name: FLOWCI_AGENT_VOLUMES
+              value: $FLOWCI_AGENT_VOLUMES
+            - name: FLOWCI_RABBIT_HOST
+              value: $FLOWCI_RABBIT_HOST
+            - name: FLOWCI_ZOOKEEPER_HOST
+              value: $FLOWCI_ZOOKEEPER_HOST
+          command: [
+            "./wait_for_it.sh", 
+            "rabbitmq:5672", 
+            "-t", "0", 
+            "--strict", "--",
+            "java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-XX:-UseAdaptiveSizePolicy",
+            "-Xms1500m", "-
+            Xmx1500m", "-Xmn900m", "-XX:SurvivorRatio=5", "-jar", "flow-ci-core.jar"
+          ]
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "2000m"
+            limits:
+              memory: "2Gi"
+              cpu: "2000m"
