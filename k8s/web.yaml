@@ -1,19 +1,32 @@
 # web
+apiVersion: v1
+kind: Service
+metadata:
+  name: flowci-web-service
+spec:
+  selector:
+    app: flowci-web
+  ports:
+    - protocol: TCP
+      port: 80
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flow-ci-web-deployment
+  name: flowci-web-deployment
   labels:
-    app: flow-ci-web
+    app: flowci-web
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: flow-ci-web
+      app: flowci-web
   template:
     metadata:
       labels:
-        app: flow-ci-web
+        app: flowci-web
     spec:
       containers:
         - name: web

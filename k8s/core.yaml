@@ -1,19 +1,32 @@
 # core
+apiVersion: v1
+kind: Service
+metadata:
+  name: flowci-core-service
+spec:
+  selector:
+    app: flowci-core
+  ports:
+    - protocol: TCP
+      port: 8080
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flow-ci-core-deployment
+  name: flowci-core-deployment
   labels:
-    app: flow-ci-core
+    app: flowci-core
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: flow-ci-core
+      app: flowci-core
   template:
     metadata:
       labels:
-        app: flow-ci-core
+        app: flowci-core
     spec:
       containers:
         - name: core
@@ -22,7 +35,7 @@ spec:
             - name: FLOWCI_LOG_LEVEL
               value: DEBUG
             - name: FLOWCI_SERVER_URL
-              value: "TODO"
+              value: http://flowci-core-service:8080
             - name: FLOWCI_MONGODB_URI
               value: mongodb://flowci-db-service:27017/flow_ci_db
             - name: FLOWCI_RABBITMQ_URI
@@ -37,14 +50,25 @@ spec:
               value: flowci-zk-service
             - name: FLOWCI_AGENT_VOLUMES
               value: "name=pyenv,dest=/ci/python,script=init.sh,image=flowci/pyenv:1.3,init=init-pyenv-volume.sh"
+            - name: K8S_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: K8S_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: K8S_POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
           command: [
             "./wait_for_it.sh", 
-            "rabbitmq:5672", 
+            "flowci-mq-service:5672", 
             "-t", "0", 
             "--strict", "--",
             "java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-XX:-UseAdaptiveSizePolicy",
-            "-Xms1500m", "-
-            Xmx1500m", "-Xmn900m", "-XX:SurvivorRatio=5", "-jar", "flow-ci-core.jar"
+            "-Xms1500m", "-Xmx1500m", "-Xmn900m", "-XX:SurvivorRatio=5", "-jar", "flow-ci-core.jar"
           ]
           ports:
             - containerPort: 8080
