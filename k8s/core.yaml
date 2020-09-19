@@ -4,11 +4,13 @@ kind: Service
 metadata:
   name: flowci-core-service
 spec:
+  type: NodePort
   selector:
     app: flowci-core
   ports:
     - protocol: TCP
       port: 8080
+      nodePort: 30180
 
 ---
 
@@ -31,6 +33,7 @@ spec:
       containers:
         - name: core
           image: flowci/core:dev
+          imagePullPolicy: Always
           env:
             - name: FLOWCI_LOG_LEVEL
               value: DEBUG

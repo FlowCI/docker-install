@@ -4,11 +4,13 @@ kind: Service
 metadata:
   name: flowci-web-service
 spec:
+  type: NodePort
   selector:
     app: flowci-web
   ports:
     - protocol: TCP
       port: 80
+      nodePort: 30080
 
 ---
 
@@ -31,9 +33,10 @@ spec:
       containers:
         - name: web
           image: flowci/web:dev
+          imagePullPolicy: Always
           env:
             - name: FLOWCI_SERVER_URL
-              value: TODO
+              value: http://192.168.0.108:30180
           ports:
             - containerPort: 80
           resources:
