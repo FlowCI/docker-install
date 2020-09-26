@@ -39,7 +39,7 @@ initEnv()
 	export FLOWCI_DEFAULT_MINIO_SECRET_KEY=minio123
 
 	## setup agnet volumes for local auto agent
-	export FLOWCI_AGENT_VOLUMES="name=pyenv,dest=/ci/python,script=init.sh"
+	export FLOWCI_AGENT_VOLUMES="name=pyenv,dest=/ci/python,script=init.sh,image=flowci/pyenv:1.3,init=init-pyenv-volume.sh"
 
 	## setup data path
 	export FLOWCI_DATABASE_DIR="$HOME/.flowci/db"
@@ -91,12 +91,6 @@ pullAgentImage()
 	fi
 }
 
-setPyenvForLocalAgent() 
-{
-	docker volume create pyenv
-	docker run --rm -v pyenv:/target flowci/pyenv:1.3 bash -c "/ws/init-pyenv-volume.sh"
-}
-
 while getopts ":h:" arg; do
   case $arg in
     h) HOST=$OPTARG;;
@@ -111,7 +105,6 @@ case $COMMAND in
 		setDefaultValue
 		initEnv
 		printInfo
-		setPyenvForLocalAgent
 		docker-compose -f server.yml up -d
 		;;
 
