@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Pod
+metadata:
+  labels:
+    app: flowci-agent
+spec:
+  containers:
+    - name: flowci-agent
+      image: flowci/agent
+      imagePullPolicy: Always
+      env:
+        - name: FLOWCI_AGENT_LOG_LEVEL
+          value: DEBUG
+        - name: FLOWCI_SERVER_URL
+          value: http://your_server_address:port
+        - name: FLOWCI_AGENT_TOKEN
+          value: your_agent_token
+        - name: FLOWCI_AGENT_VOLUMES
+          value: name=pyenv,dest=/ci/python,script=init.sh,image=flowci/pyenv:1.3,init=init-pyenv-volume.sh
+        - name: FLOWCI_AGENT_K8S_ENABLED
+          value: "true"
+        - name: FLOWCI_AGENT_K8S_IN_CLUSTER
+          value: "true"
+        - name: K8S_NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: K8S_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: K8S_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: K8S_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+      resources:
+        requests:
+          memory: "128Mi"
+          cpu: "200m"
+        limits:
+          memory: "128Mi"
+          cpu: "200m"
+    - name: docker-runtime
+      image: docker:dind
+      imagePullPolicy: Always
+      env:
+        - name: DOCKER_TLS_CERTDIR
+          value: ""
+      securityContext:
+        privileged: true
+      resources:
+        requests:
+          memory: "256Mi"
+          cpu: "500m"
+        limits:
+          memory: "256Mi"
+          cpu: "500m"

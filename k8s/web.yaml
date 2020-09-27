@@ -36,7 +36,7 @@ spec:
           imagePullPolicy: Always
           env:
             - name: FLOWCI_SERVER_URL
-              value: http://192.168.0.108:30180
+              value: http://192.168.0.110:30180
           ports:
             - containerPort: 80
           resources:
