@@ -1,6 +1,6 @@
 ## Docker-Compose file is used to start flow.ci services
 
-version: '3.4'
+version: "3.4"
 
 services:
   db:
@@ -65,14 +65,25 @@ services:
       FLOWCI_MINIO_SECRET: $FLOWCI_DEFAULT_MINIO_SECRET_KEY
       FLOWCI_ZK_HOST: zk
       FLOWCI_AGENT_VOLUMES: $FLOWCI_AGENT_VOLUMES
-    command: [
-      "./wait_for_it.sh", 
-      "rabbitmq:5672", 
-      "-t", "0", 
-      "--strict", "--",
-      "java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-XX:-UseAdaptiveSizePolicy",
-      "-Xms1500m", "-Xmx1500m", "-Xmn900m", "-XX:SurvivorRatio=5", "-jar", "flow-ci-core.jar"
-    ]
+    command:
+      [
+        "./wait_for_it.sh",
+        "rabbitmq:5672",
+        "-t",
+        "0",
+        "--strict",
+        "--",
+        "java",
+        "-XX:+UnlockExperimentalVMOptions",
+        "-XX:+UseCGroupMemoryLimitForHeap",
+        "-XX:-UseAdaptiveSizePolicy",
+        "-Xms1500m",
+        "-Xmx1500m",
+        "-Xmn900m",
+        "-XX:SurvivorRatio=5",
+        "-jar",
+        "flow-ci-core.jar",
+      ]
     depends_on:
       - rabbitmq
       - db

@@ -56,15 +56,3 @@ spec:
             limits:
               memory: "256Mi"
               cpu: "200m"
-          readinessProbe:
-            httpGet:
-              path: /minio/health/ready
-              port: 9000
-            initialDelaySeconds: 120
-            periodSeconds: 20
-          livenessProbe:
-            httpGet:
-              path: /minio/health/live
-              port: 9000
-            initialDelaySeconds: 120
-            periodSeconds: 20
