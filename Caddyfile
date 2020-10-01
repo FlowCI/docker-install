@@ -1,0 +1,5 @@
+:8080
+
+reverse_proxy 172.1.2.1:8080 172.1.2.2:8080 {
+	lb_policy first
+}
