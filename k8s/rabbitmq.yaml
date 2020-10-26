@@ -1,0 +1,42 @@
+# rabbit
+apiVersion: v1
+kind: Service
+metadata:
+  name: flowci-mq-service
+spec:
+  selector:
+    app: flowci-mq
+  ports:
+    - protocol: TCP
+      port: 5672
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flowci-mq-deployment
+  labels:
+    app: flowci-mq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flowci-mq
+  template:
+    metadata:
+      labels:
+        app: flowci-mq
+    spec:
+      containers:
+        - name: mq
+          image: rabbitmq:3-management
+          ports:
+            - containerPort: 5672
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "200m"
+            limits:
+              memory: "512Mi"
+              cpu: "200m"

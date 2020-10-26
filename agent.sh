@@ -44,10 +44,6 @@ checkTokenArg()
 
 startAgent()
 {
-	# setup pyenv for docker runtime in step
-	docker volume create pyenv
-	docker run --rm -v pyenv:/target flowci/pyenv:1.3 bash -c "/ws/init-pyenv-volume.sh"
-
 	echo $URL
 	echo $TOKEN
 	echo $MODEL

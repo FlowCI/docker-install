@@ -1,0 +1,42 @@
+# zk
+apiVersion: v1
+kind: Service
+metadata:
+  name: flowci-zk-service
+spec:
+  selector:
+    app: flowci-zk
+  ports:
+    - protocol: TCP
+      port: 2181
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flowci-zk-deployment
+  labels:
+    app: flowci-zk
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flowci-zk
+  template:
+    metadata:
+      labels:
+        app: flowci-zk
+    spec:
+      containers:
+        - name: zk
+          image: zookeeper:3.6
+          ports:
+            - containerPort: 2181
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "200m"
+            limits:
+              memory: "256Mi"
+              cpu: "200m"
