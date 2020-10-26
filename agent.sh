@@ -125,7 +125,7 @@ while getopts ":u:t:m:" arg; do
   esac
 done
 
-AGENT_VERSION=0.20.32
+AGENT_VERSION=0.20.45
 COMMAND="${@: -1}"
 CONTAINER_NAME="flowci-agent-$TOKEN"
 RUNNING_CONTAINER=$(docker ps -aq -f name=$CONTAINER_NAME -f status=running)
