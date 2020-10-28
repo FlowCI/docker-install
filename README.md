@@ -6,7 +6,7 @@
 
 - [Docker](https://docs.docker.com/install/) installed
 - [Docker-Compose](https://docs.docker.com/compose/install/) installed
-- Mac or Linux (Windows not supported yet)
+- Mac OS/Linux/Unix/Windows
 - Suggest 4 Cores, 8G RAM, and more than 60G free disk
 
 ## Install
