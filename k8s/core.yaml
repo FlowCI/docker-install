@@ -51,7 +51,7 @@ spec:
             - name: FLOWCI_ZK_HOST
               value: flowci-zk-service
             - name: FLOWCI_AGENT_IMAGE
-              value: flowci/agent:dev
+              value: flowci/agent
             - name: FLOWCI_AGENT_VOLUMES
               value: "name=pyenv,dest=/ci/python,script=init.sh,image=flowci/pyenv:1.3,init=init-pyenv-volume.sh"
             - name: K8S_NAMESPACE
