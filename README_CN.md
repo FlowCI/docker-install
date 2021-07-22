@@ -4,7 +4,7 @@
 
 - 需要 [Docker](https://docs.docker.com/install/)
 - 需要 [Docker-Compose](https://docs.docker.com/compose/install/)
-- Mac 或 Linux 系统 (Windows 暂时还不支持)
+- Mac/Linux/Windows
 - 建议 4核 CPU， 8G 内存，60G 以上存储空间
 
 ## 安装

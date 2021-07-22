@@ -4,7 +4,7 @@
 
 - [Docker](https://docs.docker.com/install/) installed
 - [Docker-Compose](https://docs.docker.com/compose/install/) installed
-- Mac OS/Linux/Unix/Windows
+- Mac/Linux/Windows
 - Recommand 4 Cores, 8G RAM, and more than 60G free disk space
 
 ## Install
