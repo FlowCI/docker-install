@@ -1,13 +1,11 @@
-# Install from Docker in 1 minute
-
-[1 分钟从 Docker 安装](./README_CN.md)
+# Install from Docker within a minute | [1 分钟从 Docker 安装](./README_CN.md)
 
 ## Per-requirements
 
 - [Docker](https://docs.docker.com/install/) installed
 - [Docker-Compose](https://docs.docker.com/compose/install/) installed
 - Mac OS/Linux/Unix/Windows
-- Suggest 4 Cores, 8G RAM, and more than 60G free disk
+- Recommand 4 Cores, 8G RAM, and more than 60G free disk space
 
 ## Install
 
