@@ -82,7 +82,7 @@ startFromBinary()
 	mkdir -p $AGENT_HOST_DIR
 
 	echo "Starting agent from binary"
-	$target_bin -u $URL -t $TOKEN -w $AGENT_HOST_DIR -m "name=pyenv,dest=/ci/python,script=init.sh,image=flowci/pyenv:1.3,init=init-pyenv-volume.sh"
+	$target_bin -u $URL -t $TOKEN -w $AGENT_HOST_DIR -m "name=pyenv,dest=/ci/python,script=init.sh,image=flowci/pyenv,init=init-pyenv-volume.sh"
 }
 
 startFromDocker()
@@ -104,7 +104,7 @@ startFromDocker()
 		--name $CONTAINER_NAME \
 		-e FLOWCI_SERVER_URL=$URL \
 		-e FLOWCI_AGENT_TOKEN=$TOKEN \
-		-e FLOWCI_AGENT_VOLUMES="name=pyenv,dest=/ci/python,script=init.sh,image=flowci/pyenv:1.3,init=init-pyenv-volume.sh" \
+		-e FLOWCI_AGENT_VOLUMES="name=pyenv,dest=/ci/python,script=init.sh,image=flowci/pyenv,init=init-pyenv-volume.sh" \
 		-e FLOWCI_AGENT_WORKSPACE="/ws" \
 		-v $AGENT_HOST_DIR:/ws \
 		-v pyenv:/ci/python \

@@ -17,7 +17,7 @@ spec:
         - name: FLOWCI_AGENT_TOKEN
           value: your_agent_token
         - name: FLOWCI_AGENT_VOLUMES
-          value: "name=pyenv,dest=/ci/python,script=init.sh,image=flowci/pyenv:1.3,init=init-pyenv-volume.sh"
+          value: "name=pyenv,dest=/ci/python,script=init.sh,image=flowci/pyenv,init=init-pyenv-volume.sh"
         - name: FLOWCI_AGENT_K8S_ENABLED
           value: "true"
         - name: FLOWCI_AGENT_K8S_IN_CLUSTER
