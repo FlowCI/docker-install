@@ -77,8 +77,6 @@ services:
         "--strict",
         "--",
         "java",
-        "-XX:+UnlockExperimentalVMOptions",
-        "-XX:+UseCGroupMemoryLimitForHeap",
         "-XX:-UseAdaptiveSizePolicy",
         "-Xms1500m",
         "-Xmx1500m",
