@@ -26,13 +26,14 @@ printHelp()
 
 initEnv() 
 {
-	## $HOST is the ip address of host, it can be gained from setDefaultValue func automatically
-	export FLOWCI_SERVER_HOST=$HOST
-
 	## setup ports
 	export FLOWCI_WEB_PORT=2015
 	export FLOWCI_SERVER_PORT=8080
-	export FLOWCI_SERVER_URL="http://$FLOWCI_SERVER_HOST:$FLOWCI_SERVER_PORT"
+
+	## setup urls
+	## $HOST is the ip address of host, it can be gained from setDefaultValue func automatically
+	export FLOWCI_SERVER_URL="http://$HOST:$FLOWCI_SERVER_PORT"
+	export FLOWCI_WEB_URL="http://$HOST:$FLOWCI_WEB_PORT"
 
 	## setup minio keys
 	export FLOWCI_DEFAULT_MINIO_ACCESS_KEY=minio
@@ -58,7 +59,7 @@ printInfo()
 
 	echo ""
 	echo -e "\xF0\x9f\x8d\xba  HOW TO:"
-	echo -e "\xF0\x9F\x91\x89   Open Web UI:\t http://$FLOWCI_SERVER_HOST:$FLOWCI_WEB_PORT"
+	echo -e "\xF0\x9F\x91\x89   Open Web UI:\t http://$FLOWCI_WEB_URL"
 	echo -e "\xF0\x9F\x91\x89   Start Agent:\t ./agent.sh -u $FLOWCI_SERVER_URL -t your_agent_token start"
 	echo ""
 }

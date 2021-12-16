@@ -61,6 +61,7 @@ services:
     environment:
       FLOWCI_LOG_LEVEL: DEBUG
       FLOWCI_SERVER_URL: $FLOWCI_SERVER_URL
+      FLOWCI_WEB_URL: $FLOWCI_SERVER_URL
       FLOWCI_MONGODB_URI: mongodb://db:27017/flow_ci_db
       FLOWCI_RABBITMQ_URI: amqp://guest:guest@rabbitmq:5672
       FLOWCI_MINIO_ENDPOINT: http://minio:9000
@@ -77,8 +78,6 @@ services:
         "--strict",
         "--",
         "java",
-        "-XX:+UnlockExperimentalVMOptions",
-        "-XX:+UseCGroupMemoryLimitForHeap",
         "-XX:-UseAdaptiveSizePolicy",
         "-Xms1500m",
         "-Xmx1500m",
