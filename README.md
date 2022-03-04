@@ -19,6 +19,6 @@ cd flow-docker
 
 After all services started, open web browser with url 'http://localhost:2015'
 
-![start](https://github.com/FlowCI/docs/raw/master/src/start_server.gif)
+![start](https://github.com/FlowCI/docs/raw/master/_images/start_server.gif)
 
 > The default ports and data path can be changed from [server.sh](./server.sh) and [server.yml](./server.yml)

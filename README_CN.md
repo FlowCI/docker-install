@@ -21,6 +21,6 @@ cd flow-docker
 
 当服务启动后, 可以打开浏览器访问 'http://localhost:2015'
 
-![start](https://github.com/FlowCI/docs/raw/master/src/start_server.gif)
+![start](https://github.com/FlowCI/docs/raw/master/_images/start_server.gif)
 
 > 默认的端口，和数据路径可以从 [server.sh](./server.sh) 和 [server.yml](./server.yml) 中修改
