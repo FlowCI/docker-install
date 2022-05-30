@@ -2,10 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: flowci-core-service
+  labels:
+    {{- include "chart.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.service.core.type }}
+  type: {{ .Values.core.service.type }}
   ports:
-    - port: {{ .Values.service.core.port }}
+    - port: {{ .Values.core.service.port }}
       targetPort: http
       protocol: TCP
       name: http

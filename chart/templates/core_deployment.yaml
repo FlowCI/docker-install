@@ -2,7 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: flowci-core
+  labels:
+    {{- include "chart.labels" . | nindent 4 }}
 spec:
+  replicas: {{ .Values.core.replicaCount }}
   selector:
     matchLabels:
       app.kubernetes.io/name: flowci-core
