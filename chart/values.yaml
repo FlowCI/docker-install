@@ -77,3 +77,28 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
+
+zookeeper:
+  fullnameOverride: "flowci-zk"
+  persistence:
+    size: 1Gi
+
+mongodb:
+  fullnameOverride: "flowci-mongodb"
+  persistence:
+    size: 4Gi
+
+rabbitmq:
+  fullnameOverride: "flowci-rabbitmq"
+  persistence:
+    size: 1Gi
+
+minio:
+  fullnameOverride: "flowci-minio"
+  mode: "standalone"
+  auth:
+    rootUser: "admin"
+    rootPassword: "12345"
+  persistence:
+    size: 8Gi
+  

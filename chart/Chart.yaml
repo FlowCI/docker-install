@@ -9,7 +9,3 @@ keywords:
 home: https://flowci.github.io
 sources:
   - https://github.com/flowci
-dependencies:
-  - name: zookeeper
-    version: 9.2.0
-    repository: https://charts.bitnami.com/bitnami
