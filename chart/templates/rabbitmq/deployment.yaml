@@ -16,6 +16,11 @@ spec:
       containers:
         - name: flowci-rabbitmq
           image: rabbitmq:3.8
+          env:
+            - name: "RABBITMQ_DEFAULT_USER"
+              value: "admin"
+            - name: "RABBITMQ_DEFAULT_PASS"
+              value: "admin"
           volumeMounts:
             - mountPath: "/var/lib/rabbitmq"
               name: data
