@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flowci-core
+  labels:
+    {{- include "chart.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.core.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: flowci-core
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: flowci-core
+    spec:
+      containers:
+        - name: flowci-core
+          image: flowci/core
+          imagePullPolicy: Always
+          env:
+            - name: "FLOWCI_SERVER_PORT"
+              value: "8080"
+            - name: "FLOWCI_AGENT_VOLUMES"
+              value: "name=pyenv,dest=/ci/python,script=init.sh,image=flowci/pyenv,init=init-pyenv-volume.sh"
+            - name: "FLOWCI_RABBITMQ_URI"
+              value: "amqp://admin:admin@flowci-rabbitmq:5672"
+            - name: "FLOWCI_ZK_HOST"
+              value: "flowci-zookeeper"
+            - name: "FLOWCI_MONGODB_URI"
+              value: "mongodb://flowci-mongodb:27017/flow_db"
+            - name: "FLOWCI_MINIO_ENDPOINT"
+              value: "http://flowci-minio:9000"
+            - name: "FLOWCI_MINIO_KEY"
+              value: "minio"
+            - name: "FLOWCI_MINIO_SECRET"
+              value: "minio123"
+          command: [
+            "./wait_for_it.sh",
+            "flowci-rabbitmq:5672",
+            "-t",
+            "0",
+            "--strict",
+            "--",
+            "java",
+            "-XX:-UseAdaptiveSizePolicy",
+            "-Xms1500m",
+            "-Xmx1500m",
+            "-Xmn900m",
+            "-XX:SurvivorRatio=5",
+            "-jar",
+            "flow-ci-core.jar",
+          ]
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.core.resources | nindent 12 }}

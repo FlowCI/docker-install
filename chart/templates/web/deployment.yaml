@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flowci-web
+  labels:
+    {{- include "chart.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.web.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: flowci-web
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: flowci-web
+    spec:
+      containers:
+        - name: flowci-web
+          image: flowci/web
+          imagePullPolicy: Always
+          env:
+            - name: "FLOWCI_SERVER_URL"
+              value: {{ .Values.web.server_url }}
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          resources:
+            {{- toYaml .Values.web.resources | nindent 12 }}
