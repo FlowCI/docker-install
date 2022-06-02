@@ -13,7 +13,7 @@ core:
       memory: 2Gi
 
 web:
-  server_url: "localhost:8080"
+  server_url: "http://localhost:8080"
   replicaCount: 1
   service:
     type: ClusterIP
