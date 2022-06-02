@@ -55,3 +55,5 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
+          resources:
+            {{- toYaml .Values.core.resources | nindent 12 }}
