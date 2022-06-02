@@ -7,5 +7,6 @@ appVersion: "1.22.12"
 keywords:
   - CICD
 home: https://flowci.github.io
+icon: https://github.com/FlowCI/docs/raw/master/_images/logo.png
 sources:
   - https://github.com/flowci
