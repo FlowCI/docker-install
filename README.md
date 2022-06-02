@@ -22,3 +22,14 @@ After all services started, open web browser with url 'http://localhost:2015'
 ![start](https://github.com/FlowCI/docs/raw/master/_images/start_server.gif)
 
 > The default ports and data path can be changed from [server.sh](./server.sh) and [server.yml](./server.yml)
+
+
+# Install on Kubernetes by Helm Chart
+
+```bash
+helm repo add flow.ci https://flowci.github.io/helm-chart/
+helm repo update
+
+kubectl create ns flowci
+helm install flow.ci flow.ci/flow.ci -n flowci
+```
