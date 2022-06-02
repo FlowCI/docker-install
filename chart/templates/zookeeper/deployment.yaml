@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flowci-zookeeper
+  labels:
+    {{- include "chart.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: flowci-zookeeper
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: flowci-zookeeper
+    spec:
+      containers:
+        - name: flowci-zookeeper
+          image: zookeeper:3.6
+          volumeMounts:
+            - mountPath: "/data"
+              name: data
+            - mountPath: "/datalog"
+              name: data-log
+          ports:
+            - name: tcp
+              containerPort: 2181
+              protocol: TCP
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: flowci-zookeeper-data
+        - name: data-log
+          persistentVolumeClaim:
+            claimName: flowci-zookeeper-data-log
