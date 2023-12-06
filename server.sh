@@ -36,8 +36,8 @@ initEnv()
 	export FLOWCI_WEB_URL="http://$HOST:$FLOWCI_WEB_PORT"
 
 	## setup minio keys
-	export FLOWCI_DEFAULT_MINIO_ACCESS_KEY=minio
-	export FLOWCI_DEFAULT_MINIO_SECRET_KEY=minio123
+	export FLOWCI_DEFAULT_MINIO_ROOT_USER=minio
+	export FLOWCI_DEFAULT_MINIO_ROOT_PASSWORD=minio123
 
 	## setup agnet volumes for local auto agent
 	export FLOWCI_AGENT_VOLUMES="name=pyenv,dest=/ci/python,script=init.sh,image=flowci/pyenv,init=init-pyenv-volume.sh"
